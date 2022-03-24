@@ -1,4 +1,111 @@
-.App {
+body{
+  font-family:Arial, Helvetica, sans-serif ;
+}
+
+
+#story {
+  padding: 30px 150px;
+  align-items: center;
+  background-color: aliceblue;
+}
+.fa-star{
+  color: gold;
+}
+
+
+h4,h3{
+  color:white;
+}
+
+#loginModal .modal-header{
+  background: #d87683;
+}
+
+
+
+.card-body{
+  background-color: white;
+  text-align: center;
+  font-size:1.5em;
+  
+}
+
+.card:hover {
+  transform:scale(1.008);
+}
+
+/*.card-deck{
+    margin: 50px 50px;
+}*/
+
+.navbar{
+  background-color: #05315ac5;
+  
+}
+
+.site-footer{
+  background-color: #b3e2ce;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+#localArtist{
+  margin: 0px;
+  padding: 15px;
+  color: #d87683;
+  background-color: white;
+}
+#local{
+  color: #d87683;
+}
+
+.card-columns{
+  margin-top: 15px;
+  
+}
+#paintings, #accessory, #jewellery, #artist{
+ background-color: #dfa0a8;
+  padding: 20px;
+}
+
+
+#sidebar {
+  /*min-width: 150px;
+  max-width: 150px;*/
+  margin: 0;
+  padding: 0;
+  color: white;
+  transition: all 0.5s;
+}
+
+a,
+a:hover,
+a:focus {
+  color: black;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+#sidebar ul li a {
+  padding: 20px;
+  
+  font-size: 1.2em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  width: auto;
+  color: white;
+  background: rgb(117, 116, 116);
+}
+
+
+
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +142,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

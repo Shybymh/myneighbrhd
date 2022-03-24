@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
-import { Nav, Navbar,  NavbarToggler, Collapse, NavItem, NavbarBrand, Jumbotron, 
-Button, Modal, ModalHeader, ModalBody, Form , FormGroup, Input, Label } from 'reactstrap';
+import { Nav, Navbar,  NavbarToggler, Collapse, NavItem, NavbarBrand,  UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu, 
+Button, Modal, ModalHeader, ModalBody, Form , FormGroup, Input, Label  } from 'reactstrap';
+
 import { NavLink } from 'react-router-dom';
 
 // Header Component rendering Jumbotron and Navigation bar
@@ -41,53 +42,42 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <h4>Neighborhood Makers and Crafters</h4>
-                            </div>
-                        </div>
-                    </div>
-                </Jumbotron>
-
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="NuCamp Logo" /></NavbarBrand>
+                        <NavbarBrand className="mr-auto" href="/"><h4>Neighborhood Makers and Crafters</h4></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
+                            <Nav navbar className="ml-auto">
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/home">
-                                        <i className="fa fa-home fa-lg" /> Home
+                                    <NavLink className="nav-link text-light" to="/home"> Home
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/catagories">
-                                        <i className="fa fa-list fa-lg" /> Categories
-                                    </NavLink>
+                                    <UncontrolledDropdown setActiveFromChild >
+                                        <DropdownToggle tag="a" className="nav-link text-light" caret>
+                                        Categories
+                                        </DropdownToggle>
+                                        <DropdownMenu >
+                                            <DropdownItem tag="a" href="/paintings" >Paintings</DropdownItem>
+                                            <hr />
+                                            <DropdownItem tag="a" href="/accessories" >Accessories</DropdownItem>
+                                            <hr />
+                                            <DropdownItem tag="a" href="/jewellery" >Jewellery</DropdownItem>
+                                        </DropdownMenu>
+                                    </UncontrolledDropdown>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/artists">
-                                        <i className="fa fa-info fa-lg" /> Artists
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/contactus">
-                                        <i className="fa fa-address-card fa-lg" /> Contact Us
+                                    <NavLink className="nav-link text-light" to="/artists"> Artists
                                     </NavLink>
                                 </NavItem>
                             </Nav>
-                            <span className="navbar-text ml-auto">
-                                <Button outline onClick={this.toggleModal}>
-                                    <i className="fa fa-sign-in fa-lg" /> Login
-                                </Button>
-                            </span>
+                            <span className="navbar-text text-light ml-auto" onClick={this.toggleModal} >Login</span>
                         </Collapse>
                     </div>
                 </Navbar>
+                
 
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <Modal id="loginModal" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleLogin}>
