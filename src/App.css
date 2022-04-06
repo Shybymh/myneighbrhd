@@ -1,5 +1,13 @@
-body{
+body {
+  background-color: rgb(230, 227, 227);
+}
+
+h1,h2,h3,h4{
   font-family:Arial, Helvetica, sans-serif ;
+}
+
+h5,h6,p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
@@ -18,8 +26,14 @@ h4,h3{
 }
 
 #loginModal .modal-header{
-  background: #d87683;
+  background: #abd4fa ;
 }
+
+Button {
+  color: white;
+}
+
+
 
 
 
@@ -31,7 +45,7 @@ h4,h3{
 }
 
 .card:hover {
-  transform:scale(1.008);
+  transform:scale(1.01);
 }
 
 /*.card-deck{
@@ -39,9 +53,26 @@ h4,h3{
 }*/
 
 .navbar{
-  background-color: #05315ac5;
+  background-color: #073057c5;
   
 }
+.DropdownItem{
+  background: #073057c5;
+}
+
+
+
+#secondNav {
+  background-color: white;
+  align-items: center;
+}
+
+#tabnav{
+  background-color: white;
+  border-bottom: black;
+}
+
+
 
 .site-footer{
   background-color: #b3e2ce;
@@ -69,9 +100,9 @@ h4,h3{
 }
 
 
-#sidebar {
-  /*min-width: 150px;
-  max-width: 150px;*/
+#sidebar { 
+  min-width: 150px;
+  max-width: 150px;
   margin: 0;
   padding: 0;
   color: white;
@@ -85,7 +116,7 @@ a:focus {
   text-decoration: none;
   transition: all 0.3s;
 }
-
+ 
 #sidebar ul li a {
   padding: 20px;
   
@@ -95,11 +126,57 @@ a:focus {
 
 #sidebar ul li a:hover {
   width: auto;
-  color: white;
+  color: rgb(172, 165, 165);
   background: rgb(117, 116, 116);
+} 
+/* events page */
+
+.postcard {
+  flex-wrap: wrap;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  margin: 0 0 2rem 0;
+  overflow: hidden;
+  position: relative;
+  color: #111010;
 }
 
+  .postcard__title {
+    font-size: 1.75rem;
+  }
 
+  .postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+  }
+
+  
+  .postcard__bar {
+    width: 50px;
+    height: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #6e5e5e;
+    transition: width 0.2s ease;
+  }
+
+  .postcard__text {
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .postcard__preview-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    height: 100%;
+  }
 
 
 

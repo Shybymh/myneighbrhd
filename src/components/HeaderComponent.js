@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
-import { Nav, Navbar,  NavbarToggler, Collapse, NavItem, NavbarBrand,  UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu, 
-Button, Modal, ModalHeader, ModalBody, Form , FormGroup, Input, Label  } from 'reactstrap';
+import { Nav, Navbar,  NavbarToggler, Collapse, NavItem, NavbarBrand,   
+Button, Modal, ModalHeader, ModalBody, Form , FormGroup, Input, Label, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 // Header Component rendering Jumbotron and Navigation bar
 
@@ -44,30 +44,60 @@ class Header extends Component {
             <React.Fragment>
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/"><h4>Neighborhood Makers and Crafters</h4></NavbarBrand>
+                        <NavbarBrand className="mr-auto" href="/"><h4>MyNeighborhood</h4></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar className="ml-auto">
+                            <Nav navbar fill>
+                                
                                 <NavItem>
-                                    <NavLink className="nav-link text-light" to="/home"> Home
+                                <NavLink className="nav-link text-light" to="/home">Home
+                                </NavLink>
+                                    
+                                </NavItem>
+                                    <UncontrolledDropdown nav inNavbar >
+                                        <DropdownToggle nav caret>
+                                        Shop local
+                                        </DropdownToggle>
+                                        <DropdownMenu right className="dropdown">
+                                            <DropdownItem><Link to='/paintings'>
+                                            Paintings</Link>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem><Link to='/accessories'>
+                                                Accessories</Link>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem><Link to='/jewellery'>
+                                            Jewellery</Link>
+                                            </DropdownItem>
+                                        </DropdownMenu>
+                                    </UncontrolledDropdown>
+
+
+
+                                    {/* <li  >Paintings</li>
+                                    <li>Accessories</li>
+                                    <li>Jewellery</li>
+                                    <li>Artists</li>
+                                     */}
+                                    
+                                    
+                                    
+                                    
+                                <NavItem>
+                                    <NavLink className="nav-link text-light" to="/services"> Services
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <UncontrolledDropdown setActiveFromChild >
-                                        <DropdownToggle tag="a" className="nav-link text-light" caret>
-                                        Categories
-                                        </DropdownToggle>
-                                        <DropdownMenu >
-                                            <DropdownItem tag="a" href="/paintings" >Paintings</DropdownItem>
-                                            <hr />
-                                            <DropdownItem tag="a" href="/accessories" >Accessories</DropdownItem>
-                                            <hr />
-                                            <DropdownItem tag="a" href="/jewellery" >Jewellery</DropdownItem>
-                                        </DropdownMenu>
-                                    </UncontrolledDropdown>
+                                    <NavLink className="nav-link text-light" to="/eventscomp"> Events
+                                    </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link text-light" to="/artists"> Artists
+                                    <NavLink className="nav-link text-light" to="/artists"> Free 
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className="nav-link text-light" to="/artists"> Sell
                                     </NavLink>
                                 </NavItem>
                             </Nav>

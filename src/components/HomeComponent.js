@@ -1,6 +1,7 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardImg, CardText, CardImgOverlay } from 'reactstrap';
+import { Card, CardImg, CardText, CardImgOverlay, CardBody,  CardLink } from 'reactstrap';
 
 
 
@@ -15,7 +16,26 @@ function RenderCategories({item}) {
     )
 }
 
-// Renders Breadcrumb, heading and campsites' images and names 
+ function RenderEvents({eent}) {
+     return(
+            <div>
+                <Card>
+                    <img
+                        alt="Card cap"
+                        src={eent.image}
+                        width="100%"
+                    />
+                    <CardBody className="bg-dark text-white">
+                        <CardText tag="h6">{eent.description} </CardText>
+                        <CardLink className="bg-dark text-white" href="#"> View more events </CardLink>
+                    </CardBody>
+                </Card>
+            </div>
+     )
+ }
+
+
+
 
 function Home(props) {
     // const productsplaceholder = props.categories.map(category => {
@@ -29,38 +49,43 @@ function Home(props) {
     // });
 
     return (
-        
-        <div className="container">
-            <h2 class="text-center" id="localArtist">Support local artists, every small purchase makes a big difference</h2>
-            <div className='row'>
-                <div className='col text-center '>
-                    {/* <Breadcrumb>
-                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>Directory</BreadcrumbItem> 
-                    </Breadcrumb> */}
-                    <h2>Categories</h2>
-                    <hr />
+        <>
+        <div className="container-fluid">
+            
+            <div className="row justify-content-center">
+                <div className="col-md-8">
+                <h2 className="m-3" >Upcoming Events</h2>
+                <hr />
+                    <RenderEvents eent={props.eVent} />
                 </div>
             </div>
-            <div className="row">
-                {/* {productsplaceholder} */}
-                <div className="col-md m-1">
+        
+            {/* <h2 class="text-center" id="localArtist">Shop local</h2> */}
+            <div className='row justify-content-center'>
+                <div className='col-9 text-center '>
+                <h2 className="m-3">From Our Makers</h2>
+                <hr />  
+                </div>
+            </div>
+            <div className="row justify-content-center">
+                <div className="col-4 col-md-3 mt-1">
                     <Link to="/paintings">
                     <RenderCategories item={props.painting} />
                     </Link>
                 </div>
-                <div className="col-md m-1">
+                <div className="col-4 col-md-3 mt-1">
                     <Link to="/accessories">
                     <RenderCategories item={props.accessory} />
                     </Link>
                 </div>
-                <div className="col-md m-1">
+                <div className="col-4 col-md-3 mt-1">
                     <Link to="/jewellery">
                     <RenderCategories item={props.jewell} /> 
                     </Link>
                 </div>
             </div>
         </div>
+        </>
         
     );
 }
