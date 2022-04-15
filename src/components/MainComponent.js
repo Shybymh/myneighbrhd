@@ -10,6 +10,8 @@ import ShowJewellery from './JewelleryComponent';
 import CheckoutPage from './CheckoutComponent';
 import EventsComp from './EventsComponent';
 import Renderservices from './ServicesComponent';
+import Renderfree from './FreeComponent';
+import Rendersell from './SellComponent';
 import { ARTISTS } from '../shared/artists';
 import { ACCESSORIES } from '../shared/accessories';
 import { JEWELLERY } from '../shared/jewellery';
@@ -17,10 +19,13 @@ import { PAINTINGS } from '../shared/paintings';
 import { REVIEWS } from '../shared/reviews';
 import { EVENTS } from '../shared/events';
 import { SERVICES } from '../shared/services';
+import { FREES } from '../shared/frees';
+import { SELLS } from '../shared/sells';
+import { DEALS } from '../shared/deals';
 
 
 
-// Main component working as container component, passing props to other presentational components and defining routes
+
 
 class Main extends Component {
   constructor(props) {
@@ -32,7 +37,10 @@ class Main extends Component {
         paintings: PAINTINGS,
         reviews: REVIEWS,
         events: EVENTS,
-        services: SERVICES
+        services: SERVICES,
+        frees: FREES,
+        sells: SELLS,
+        deals: DEALS
     };
   }
 
@@ -45,6 +53,7 @@ class Main extends Component {
           accessory={this.state.accessories.filter(accessory => accessory.featured)[0]}
           jewell={this.state.jewellery.filter(jewell => jewell.featured)[0]}
           eVent={this.state.events.filter(eVent => eVent.featured)[0]}
+          deaL={this.state.deals.filter(deaL => deaL.featured)[0]}
         />
       );
     }
@@ -62,14 +71,7 @@ class Main extends Component {
       );
     };
 
-    // const CampsiteWithId = ({match}) => {
-    //   return (
-    //     <CampsiteInfo 
-    //       campsite={this.state.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
-    //       comments={this.state.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
-    //     />
-    //   );
-    // };   
+     
 
     return (
       <div>
@@ -80,6 +82,8 @@ class Main extends Component {
           <Route exact path='/paintings' render={() => <ShowPaintings paintings={this.state.paintings} />}  />
           <Route exact path='/accessories' render={() => <ShowAccessories accessories={this.state.accessories} />}  />
           <Route exact path='/jewellery' render={() => <ShowJewellery jewellery={this.state.jewellery} />}  />
+          <Route exact path='/frees' render={() => <Renderfree frees={this.state.frees} />}  />
+          <Route exact path='/sells' render={() => <Rendersell sells={this.state.sells} />} />
           {/* <Route exact path='/artists' render={() => <ShowArtists artists={this.state.artists} />}  /> */}
           <Route exact path='/eventscomp' render={() => <EventsComp events={this.state.events} />}  />
           <Route exact path='/services' render={() => <Renderservices services={this.state.services} />}  />
@@ -87,11 +91,6 @@ class Main extends Component {
           <Route exact path='/accessories/:accessoryId' component={SelectedProduct} />
           <Route exact path='/jewellery/:jewellId' component={SelectedProduct} />
           <Route exact path='/checkout' component={CheckoutPage} />
-
-          {/* <Route exact path='/directory' render={() => <Directory campsites={this.state.campsites} />} />
-          <Route path='/directory/:campsiteId' component={CampsiteWithId} />
-          <Route exact path='/contactus' component={Contact} />
-          <Route exact path='/aboutus' render={() => <About partners={this.state.partners} />} /> */}
           <Redirect to='/home' />
         </Switch>
         <Footer />

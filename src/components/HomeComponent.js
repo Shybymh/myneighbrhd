@@ -1,7 +1,8 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardImg, CardText, CardImgOverlay, CardBody,  CardLink } from 'reactstrap';
+import { Card, CardImg, CardText, CardImgOverlay, CardBody } from 'reactstrap';
+import { Badge } from 'react-bootstrap';
 
 
 
@@ -19,55 +20,72 @@ function RenderCategories({item}) {
  function RenderEvents({eent}) {
      return(
             <div>
-                <Card>
+                <Card outline color="dark">
                     <img
-                        alt="Card cap"
+                        alt="Event"
                         src={eent.image}
                         width="100%"
                     />
                     <CardBody className="bg-dark text-white">
-                        <CardText tag="h6">{eent.description} </CardText>
-                        <CardLink className="bg-dark text-white" href="#"> View more events </CardLink>
+                        <CardText tag="h5">{eent.description} </CardText>
+                        <CardText className="text-white"><Link to='/eventscomp'>View more events</Link></CardText>
                     </CardBody>
                 </Card>
             </div>
      )
  }
 
+ function RenderDeals({deal}) {
+
+    return (
+        <div>
+            <Card outline color="dark">
+                <img
+                    alt="Deal"
+                    src={deal.image}
+                    width="100%" height="100%"
+                />
+                <CardImgOverlay >
+                    
+                    <CardText tag="h2" className="text-white"><Badge pill bg="danger">New</Badge></CardText>
+                    <CardText tag="h2" className="text-white"><strong>{deal.name}</strong></CardText>
+                    <CardText tag="h2" className="text-white"><strong>{deal.shop}</strong></CardText>
+                    <CardText tag="h3" className="text-white"><strong>{deal.offer}  {deal.details}</strong></CardText>
+                    <CardText tag="h3" className="text-white"><strong>{deal.date}</strong></CardText>
+                </CardImgOverlay>
+                
+            </Card>
+        </div>
+    )
+       
+}
+
+    
+
 
 
 
 function Home(props) {
-    // const productsplaceholder = props.categories.map(category => {
-    //    return (
-    //         <div key={category.id} className="col-md-4">
-    //             <Link to="/paintings">
-    //             <RenderCategories category={category} />
-    //             </Link>
-    //         </div>
-    //     );
-    // });
-
+   
     return (
         <>
         <div className="container-fluid">
             
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                <h2 className="m-3" >Upcoming Events</h2>
+                <h2 className="mt-5" >Upcoming Events</h2>
                 <hr />
                     <RenderEvents eent={props.eVent} />
                 </div>
             </div>
-        
-            {/* <h2 class="text-center" id="localArtist">Shop local</h2> */}
+           
             <div className='row justify-content-center'>
                 <div className='col-9 text-center '>
-                <h2 className="m-3">From Our Makers</h2>
+                <h2 className="mt-5">From Our Local Artists</h2>
                 <hr />  
                 </div>
             </div>
-            <div className="row justify-content-center">
+            <div className="row  justify-content-center">
                 <div className="col-4 col-md-3 mt-1">
                     <Link to="/paintings">
                     <RenderCategories item={props.painting} />
@@ -84,6 +102,14 @@ function Home(props) {
                     </Link>
                 </div>
             </div>
+            <div className="row justify-content-center">
+                <div className="col-md-8">
+                    <h2 className="mt-5" >Todays Deals</h2>
+                    <hr />
+                        <RenderDeals  deal={props.deaL}/>
+                </div>
+            </div>
+
         </div>
         </>
         

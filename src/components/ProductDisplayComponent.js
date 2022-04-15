@@ -7,22 +7,14 @@ import { GlassMagnifier } from 'react-image-magnifiers';
 
 
 function RenderProduct({product}) {
-
     
     return(
          <>
             <div className="col-md-7 mt-4">
-
                 <GlassMagnifier
                 imageSrc={product.image} width="90%" square magnifierSize="50%"
                 imageAlt={product.image}
                 />
-                {/* <Card>
-                    
-                    <CardImg top
-                       src={product.image} alt={product.name} /> 
-                       
-                </Card> */}
             </div>
 
             <div className="col-md-4 mt-5">
@@ -44,9 +36,6 @@ function RenderProduct({product}) {
                  <AddtoBag />   
                 
             </div>
-           
-       
-
         </>
     );
 }
@@ -66,27 +55,25 @@ function RenderReviews({reviews}) {
                 <hr/>
                 
                 {reviews.map(review => 
+
                     <div className="mt-4"
-                    key={review.id}> 
+                        key={review.id}> 
 
-                <i class="fa  fa-user fa-lg"/> {' '}
-
-                <i class="fa fa-star" />{' '}
-                <i class="fa fa-star"/> {' '}
-                <i class="fa fa-star"/> {' '}
-                <i class="fa fa-star"/> {' '}
-                <i class="fa fa-star"/>  <br/>
-                        {review.text} <br/> -- {review.author}, {review.date} 
+                        <i class="fa  fa-user fa-lg"/> {' '}
+                        <i class="fa fa-star" />{' '}
+                        <i class="fa fa-star"/> {' '}
+                        <i class="fa fa-star"/> {' '}
+                        <i class="fa fa-star"/> {' '}
+                        <i class="fa fa-star"/>  <br/>
+                                {review.text} <br/> -- {review.author}, {review.date} 
                     </div>)}
-
-                
             </div>
         );
     }
     return <div />;
 }
 
-// Renders Breadcrumb and campsite name dynamically. 
+
 function ProductDisplay(props) {
    if (props.painting){
     return(

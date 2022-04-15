@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {
-    Button,  Label,  Col, Form, FormGroup, Input, FormFeedback, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Button,  Label,  Form, FormGroup, 
+    Input, FormFeedback, Modal, ModalBody, 
+    ModalHeader } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
 
 
 
@@ -14,11 +16,12 @@ class CheckoutPage extends Component {
             lastname: '',
             phoneNum:'',
             email:'',
-            custumization:'',
-            paymentType: 'By Card',
-            cardNum:'',
-            expiry:'',
-            cvv:'',
+            customization:'',
+            paymentType: '',
+            cardNum: '',
+            expiry: '',
+            cvv: '',
+            
             touched: {
                 firstName: false,
                 lastName: false,
@@ -28,10 +31,13 @@ class CheckoutPage extends Component {
                 expiry: false,
                 cvv: false
 
-
             }
         };
+
+        
+
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handlePaymentType = this.handlePaymentType.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -42,9 +48,10 @@ class CheckoutPage extends Component {
             lastName: '',
             phoneNum: '',
             email: '',
-            cardNum:'',
-            expiry:'',
-            cvv:'',
+            cardNum: '',
+            expiry: '',
+            cvv: ''
+           
         };
 
         if (this.state.touched.firstName) {
@@ -90,6 +97,8 @@ class CheckoutPage extends Component {
         return errors;
     }
 
+    
+
     handleBlur = (field) => () => {
         this.setState({
             touched: {...this.state.touched, [field]: true}
@@ -106,6 +115,11 @@ class CheckoutPage extends Component {
         });
     }
 
+    handlePaymentType (event) {
+        const target = event.target;
+        document.getElementById("ccDetails").style.display = (target.id === 'cc' ? "block" : "none");
+    }
+
     handleSubmit(event) {
         event.preventDefault();
     }
@@ -119,13 +133,13 @@ class CheckoutPage extends Component {
                 <div className="container">
                     <div className="row row-content align-items-center">
                         <div className='col-12 mt-3 mb-3'>
-                        <h2>Enter Your Details</h2>
+                            <h2>Enter Your Details</h2>
                         </div>
                         <div className="col-md-10">
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup row>
                                     <Label htmlFor="firstName" md={2}>First Name</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="text" id="firstName" name="firstName"
                                             placeholder="First Name"
                                             value={this.state.firstName}
@@ -133,11 +147,11 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("firstName")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.firstName}</FormFeedback>
-                                    </Col>
+                                    </div>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor="lastName" md={2}>Last Name</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="text" id="lastName" name="lastName"
                                             placeholder="Last Name"
                                             value={this.state.lastName}
@@ -145,11 +159,11 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("lastName")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.lastName}</FormFeedback>
-                                    </Col>                        
+                                    </div>                        
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor="street" md={2}>Street Address</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="text" id="street" name="street"
                                             placeholder="Street Address"
                                             value={this.state.street}
@@ -157,11 +171,11 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("street")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.street}</FormFeedback>
-                                    </Col>                        
+                                    </div>                        
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor="city" md={2}>City</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="text" id="city" name="city"
                                             placeholder="City"
                                             value={this.state.city}
@@ -169,11 +183,11 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("city")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.city}</FormFeedback>
-                                    </Col>                        
+                                    </div>                        
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor="statenm" md={2}>State</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="text" id="statenm" name="statenm"
                                             placeholder="State"
                                             value={this.state.statenm}
@@ -181,11 +195,11 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("statenm")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.statenm}</FormFeedback>
-                                    </Col>                        
+                                    </div>                        
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor="zipcode" md={2}>Zipcode</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="text" id="zipcode" name="zipcode"
                                             placeholder="Zipcode"
                                             value={this.state.zipcode}
@@ -193,11 +207,11 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("zipcode")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.zipcode}</FormFeedback>
-                                    </Col>                        
+                                    </div>                        
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor="phoneNum" md={2}>Phone</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="tel" id="phoneNum" name="phoneNum"
                                             placeholder="Phone number"
                                             value={this.state.phoneNum}
@@ -205,11 +219,11 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("phoneNum")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.phoneNum}</FormFeedback>
-                                    </Col>
+                                    </div>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor="email" md={2}>Email</Label>
-                                    <Col md={10}>
+                                    <div className="col-md-10 mb-1">
                                         <Input type="email" id="email" name="email"
                                             placeholder="Email"
                                             value={this.state.email}
@@ -217,10 +231,10 @@ class CheckoutPage extends Component {
                                             onBlur={this.handleBlur("email")}
                                             onChange={this.handleInputChange} />
                                             <FormFeedback>{errors.email}</FormFeedback>
-                                    </Col>
+                                    </div>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Col md={{size: 4, offset: 2}}>
+                                    <div className="col-md-4 offset-2 mb-1">
                                         <FormGroup check>
                                             <Label check>
                                                 <Input type="checkbox"
@@ -230,104 +244,115 @@ class CheckoutPage extends Component {
                                                 <strong>Do you want to customise the item?</strong>
                                             </Label>
                                         </FormGroup>
-                                    </Col>
+                                    </div>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label htmlFor="specifications" md={2}>Speifications</Label>
-                                    <Col md={10}>
+                                    <Label htmlFor="specifications" md={2}>Specifications</Label>
+                                    <div className="col-md-9 mb-1">
                                         <Input type="textarea" id="specifications" name="specifications"
                                             rows="12"
                                             value={this.state.specifications}
                                             onChange={this.handleInputChange}></Input>
-                                    </Col>
+                                    </div>
                                 </FormGroup>
+                                
                                 <FormGroup row>
                                     Payment Type
                                     <FormGroup check>
-                                        <Col>
+                                        <div className='mb-1'>
                                             <Label check>
                                                 <Input type="radio"
                                                     name="paymentradios"
-                                                    onChange={this.handleInputChange} /> {' '}
+                                                    id="paypal"
+                                                    onChange={this.handleInputChange} onClick={this.handlePaymentType} /> {' '}
+
                                                     <i class="fa fa-paypal fa-lg" /> Paypal
                                             </Label>
-                                        </Col>
-                                        <Col>
+                                        </div>
+                                        
+                                        <div className='mb-1'>
                                             <Label check>
                                                 <Input type="radio"
                                                     name="paymentradios"
-                                                    onChange={this.handleInputChange} /> {' '}
-                                                   <i class="fa fa-credit-card fa-lg" /> Credit card
+                                                    id="cc"
+                                                    onChange={this.handleInputChange} onClick={this.handlePaymentType} /> {' '}
+                                                <i class="fa fa-credit-card fa-lg" /> Credit card
                                             </Label>
-                                        </Col>
+                                        </div>
                                     </FormGroup>
                                 </FormGroup>
-                                <FormGroup row>
-                                    <Label htmlFor="cname" md={2}>Name</Label>
-                                        <Col md={10}>
-                                            <Input type="text" id="cname" name="name"
-                                                placeholder="Name"
-                                                value={this.state.cname}
-                                                invalid={errors.cname}
-                                                onBlur={this.handleBlur("cname")}
-                                                onChange={this.handleInputChange} />
-                                                <FormFeedback>{errors.cname}</FormFeedback>
-                                        </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label htmlFor="cnumber" md={2}>Card Number</Label>
-                                        <Col md={10}>
-                                            <Input type="text" id="cnumber" name="cnumber"
-                                                placeholder="Card Number"
-                                                value={this.state.cnumber}
-                                                invalid={errors.cnumber}
-                                                onBlur={this.handleBlur("cnumber")}
-                                                onChange={this.handleInputChange} />
-                                                <FormFeedback>{errors.cnumber}</FormFeedback>
-                                        </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label htmlFor="cvv" md={2}>CVV</Label>
-                                        <Col md={10}>
-                                            <Input type="text" id="cvv" name="cvv"
-                                                placeholder="cvv"
-                                                value={this.state.cvv}
-                                                invalid={errors.cvv}
-                                                onBlur={this.handleBlur("cvv")}
-                                                onChange={this.handleInputChange} />
-                                                <FormFeedback>{errors.cvv}</FormFeedback>
-                                        </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label htmlFor="expiry" md={2}>Card Expiry</Label>
-                                        <Col md={10}>
-                                            <Input type="date" id="expiry" name="expiry"
-                                                placeholder="expiry"
-                                                value={this.state.expiry}
-                                                invalid={errors.expiry}
-                                                onBlur={this.handleBlur("expiry")}
-                                                onChange={this.handleInputChange} />
-                                                <FormFeedback>{errors.expiry}</FormFeedback>
-                                        </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label htmlFor="czipcode" md={2}>Zipcode</Label>
-                                        <Col md={10}>
-                                            <Input type="text" id="czipcode" name="czipcode"
-                                                placeholder="Zip code"
-                                                value={this.state.czipcode}
-                                                invalid={errors.czipcode}
-                                                onBlur={this.handleBlur("czipcode")}
-                                                onChange={this.handleInputChange} />
-                                                <FormFeedback>{errors.czipcode}</FormFeedback>
-                                        </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Col md={10}>
+                           
+                                <div id="ccDetails" className="row cc-details">
+
+                                    <FormGroup  row>
+                                        <Label htmlFor="cname" md={2}>Name</Label>
+                                            <div className='col-md-10 mt-1'>
+                                                <Input type="text" id="cname" name="name"
+                                                    placeholder="Name"
+                                                    value={this.state.cname}
+                                                    invalid={errors.cname}
+                                                    onBlur={this.handleBlur("cname")}
+                                                    onChange={this.handleInputChange} />
+                                                    <FormFeedback>{errors.cname}</FormFeedback>
+                                            </div>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Label htmlFor="cnumber" md={2}>Card Number</Label>
+                                            <div className='col-md-10 mt-1'>
+                                                <Input type="text" id="cnumber" name="cnumber"
+                                                    placeholder="Card Number"
+                                                    value={this.state.cnumber}
+                                                    invalid={errors.cnumber}
+                                                    onBlur={this.handleBlur("cnumber")}
+                                                    onChange={this.handleInputChange} />
+                                                    <FormFeedback>{errors.cnumber}</FormFeedback>
+                                            </div>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Label htmlFor="cvv" md={2}>CVV</Label>
+                                            <div className='col-md-10 mt-1'>
+                                                <Input type="text" id="cvv" name="cvv"
+                                                    placeholder="cvv"
+                                                    value={this.state.cvv}
+                                                    invalid={errors.cvv}
+                                                    onBlur={this.handleBlur("cvv")}
+                                                    onChange={this.handleInputChange} />
+                                                    <FormFeedback>{errors.cvv}</FormFeedback>
+                                            </div>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Label htmlFor="expiry" md={2}>Card Expiry</Label>
+                                            <div className='col-md-10 mt-1'>
+                                                <Input type="date" id="expiry" name="expiry"
+                                                    placeholder="expiry"
+                                                    value={this.state.expiry}
+                                                    invalid={errors.expiry}
+                                                    onBlur={this.handleBlur("expiry")}
+                                                    onChange={this.handleInputChange} />
+                                                    <FormFeedback>{errors.expiry}</FormFeedback>
+                                            </div>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Label htmlFor="czipcode" md={2}>Zipcode</Label>
+                                            <div className='col-md-10 mt-1'>
+                                                <Input type="text" id="czipcode" name="czipcode"
+                                                    placeholder="Zip code"
+                                                    value={this.state.czipcode}
+                                                    invalid={errors.czipcode}
+                                                    onBlur={this.handleBlur("czipcode")}
+                                                    onChange={this.handleInputChange} />
+                                                    <FormFeedback>{errors.czipcode}</FormFeedback>
+                                            </div>
+                                    </FormGroup>
+                                </div>
+                                        
+                                <FormGroup>
+                                    <div className='col-md-10 mt-1'>
                                         <Checked />
-                                    </Col>
+                                    </div>
                                 </FormGroup>
                             </Form>
+                           
                         </div>
                     </div>
                 </div>
@@ -336,109 +361,6 @@ class CheckoutPage extends Component {
         )
     }
 }
-
-// class Creditcard extends Component {
-//     constructor(props) {
-//       super(props);
-//       this.toggle = this.toggle.bind(this);
-//       this.state = { collapse: false };
-//     }
-  
-//     toggle() {
-//       this.setState({ collapse: !this.state.collapse });
-//     }
-  
-//     render() {
-//       return (
-//         <Form>
-//             <FormGroup row>
-//                                     Payment Type
-//                                     <FormGroup check>
-//                                         <Col>
-//                                             <Label check>
-//                                                 <Input type="radio"
-//                                                     name="paymentradios"
-//                                                     onChange={this.handleInputChange} /> {' '}
-//                                                     Paypal
-//                                             </Label>
-//                                         </Col>
-//                                         <Col>
-//                                             <Label check>
-//                                                 <Input type="radio"
-//                                                     name="paymentradios"
-//                                                     onChange={this.handleInputChange} /> {' '}
-//                                                     Credit card
-//                                             </Label>
-//                                         </Col>
-//                                     </FormGroup>
-//                                 </FormGroup>
-                                
-//                                 <FormGroup row>
-//                                     <Label htmlFor="cname" md={2}>Name</Label>
-//                                         <Col md={10}>
-//                                             <Input type="text" id="cname" name="name"
-//                                                 placeholder="Name"
-//                                                 value={this.state.cname}
-//                                                 invalid={errors.cname}
-//                                                 onBlur={this.handleBlur("cname")}
-//                                                 onChange={this.handleInputChange} />
-//                                                 <FormFeedback>{errors.cname}</FormFeedback>
-//                                         </Col>
-//                                 </FormGroup>
-//                                 <FormGroup row>
-//                                     <Label htmlFor="cnumber" md={2}>Card Number</Label>
-//                                         <Col md={10}>
-//                                             <Input type="text" id="cnumber" name="cnumber"
-//                                                 placeholder="Card Number"
-//                                                 value={this.state.cnumber}
-//                                                 invalid={errors.cnumber}
-//                                                 onBlur={this.handleBlur("cnumber")}
-//                                                 onChange={this.handleInputChange} />
-//                                                 <FormFeedback>{errors.cnumber}</FormFeedback>
-//                                         </Col>
-//                                 </FormGroup>
-//                                 <FormGroup row>
-//                                     <Label htmlFor="cvv" md={2}>CVV</Label>
-//                                         <Col md={10}>
-//                                             <Input type="text" id="cvv" name="cvv"
-//                                                 placeholder="cvv"
-//                                                 value={this.state.cvv}
-//                                                 invalid={errors.cvv}
-//                                                 onBlur={this.handleBlur("cvv")}
-//                                                 onChange={this.handleInputChange} />
-//                                                 <FormFeedback>{errors.cvv}</FormFeedback>
-//                                         </Col>
-//                                 </FormGroup>
-//                                 <FormGroup row>
-//                                     <Label htmlFor="expiry" md={2}>Card Expiry</Label>
-//                                         <Col md={10}>
-//                                             <Input type="date" id="expiry" name="expiry"
-//                                                 placeholder="expiry"
-//                                                 value={this.state.expiry}
-//                                                 invalid={errors.expiry}
-//                                                 onBlur={this.handleBlur("expiry")}
-//                                                 onChange={this.handleInputChange} />
-//                                                 <FormFeedback>{errors.expiry}</FormFeedback>
-//                                         </Col>
-//                                 </FormGroup>
-//                                 <FormGroup row>
-//                                     <Label htmlFor="czipcode" md={2}>Zipcode</Label>
-//                                         <Col md={10}>
-//                                             <Input type="text" id="czipcode" name="czipcode"
-//                                                 placeholder="Zip code"
-//                                                 value={this.state.czipcode}
-//                                                 invalid={errors.czipcode}
-//                                                 onBlur={this.handleBlur("czipcode")}
-//                                                 onChange={this.handleInputChange} />
-//                                                 <FormFeedback>{errors.czipcode}</FormFeedback>
-//                                         </Col>
-//                                 </FormGroup>
-                                
-//         </Form>
-//       );
-//     }
-//   }
-  
 
 class Checked extends Component {
     constructor(props) {
@@ -479,3 +401,5 @@ class Checked extends Component {
 }
 
 export default CheckoutPage;
+
+

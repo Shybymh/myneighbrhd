@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(230, 227, 227);
+  background-color: rgb(229, 232, 233);
 }
 
 h1,h2,h3,h4{
@@ -11,11 +11,11 @@ h5,h6,p {
 }
 
 
-#story {
+/* #story {
   padding: 30px 150px;
   align-items: center;
   background-color: aliceblue;
-}
+} */
 .fa-star{
   color: gold;
 }
@@ -26,16 +26,24 @@ h4,h3{
 }
 
 #loginModal .modal-header{
-  background: #abd4fa ;
+  background: #022a4e ;
+  color: white;
 }
 
-Button {
+#joinModal .modal-header{
+  background: #022a4e ;
   color: white;
 }
 
 
 
+Button {
+  color: rgb(27, 26, 26);
+}
 
+#addItem1, #addItem2 {
+  background-color: #183e5f;
+}
 
 .card-body{
   background-color: white;
@@ -56,21 +64,26 @@ Button {
   background-color: #073057c5;
   
 }
-.DropdownItem{
-  background: #073057c5;
+
+#free {
+  padding: 20px;
 }
 
+/* .DropdownItem{
+  background: #073057c5;
+} */
 
 
-#secondNav {
+
+/* #secondNav {
   background-color: white;
   align-items: center;
-}
+} */
 
-#tabnav{
+/* #tabnav{
   background-color: white;
   border-bottom: black;
-}
+} */
 
 
 
@@ -80,44 +93,56 @@ Button {
   margin-top: 20px;
 }
 
-#localArtist{
+/* #localArtist{
   margin: 0px;
   padding: 15px;
   color: #d87683;
   background-color: white;
-}
-#local{
+} */
+/* #local{
   color: #d87683;
-}
+} */
 
 .card-columns{
   margin-top: 15px;
   
 }
-#paintings, #accessory, #jewellery, #artist{
+/* #paintings, #accessory, #jewellery, #artist{
  background-color: #dfa0a8;
   padding: 20px;
+} */
+
+/*.dropdown{
+  background-color: inherit;
+} 
+
+.dropdownitem {
+  color: inherit;
+}*/
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-
-#sidebar { 
+/* #sidebar { 
   min-width: 150px;
   max-width: 150px;
   margin: 0;
   padding: 0;
   color: white;
   transition: all 0.5s;
-}
+} */
 
-a,
+/* a,
 a:hover,
 a:focus {
-  color: black;
+  color: white;
   text-decoration: none;
   transition: all 0.3s;
-}
+} */
  
-#sidebar ul li a {
+/*#sidebar ul li a {
   padding: 20px;
   
   font-size: 1.2em;
@@ -129,7 +154,7 @@ a:focus {
   color: rgb(172, 165, 165);
   background: rgb(117, 116, 116);
 } 
-/* events page */
+ events page */
 
 .postcard {
   flex-wrap: wrap;
@@ -137,7 +162,7 @@ a:focus {
   background-color: white;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
   border-radius: 10px;
-  margin: 0 0 2rem 0;
+  margin: 0 4rem 4rem 4rem;
   overflow: hidden;
   position: relative;
   color: #111010;
@@ -177,46 +202,13 @@ a:focus {
     text-align: justify;
     height: 100%;
   }
-
-
-
-
-
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+ .cc-details {
+    display: none;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+
+
+
+

@@ -13,8 +13,6 @@ function RenderJewellery({jewell}) {
     )
 }
 
-// Renders Breadcrumb, heading and campsites' images and names 
-// painting={this.state.paintings.filter(painting => painting.featured)[0]}
 
 function ShowJewellery(props) {
     const showjewellery = props.jewellery.filter(jewell => jewell.jewellerypage).map(jewell => {
@@ -29,7 +27,6 @@ function ShowJewellery(props) {
         <div className="container">
             <div className='row'>
                 <div className='col mt-3'>
-                    
                     <h2>Jewellery</h2>
                     <hr />
                 </div>

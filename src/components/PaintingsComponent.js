@@ -18,8 +18,7 @@ function RenderPaintings({painting}) {
     )
 }
 
-// Renders Breadcrumb, heading and campsites' images and names 
-// painting={this.state.paintings.filter(painting => painting.featured)[0]}
+
 
 function ShowPaintings(props) {
     const showpaintings = props.paintings.filter(painting => painting.paintingpage).map(painting => {
@@ -34,11 +33,9 @@ function ShowPaintings(props) {
         <div className="container">
             <div className='row'>
                 <div className='col mt-3'>
-                    
                     <h2>Paintings</h2>
                     <hr />
                 </div>
-                
             </div>
             <div className="row">
                 {showpaintings}

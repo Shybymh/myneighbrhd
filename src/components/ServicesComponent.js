@@ -1,10 +1,11 @@
+
 import React from "react";
 import { Card, CardBody, CardTitle,  CardText } from 'reactstrap';
 
 function Renderservices(props) {
     const servicecomp = props.services.map(service => {
         return(
-            <div className="col-md-4 mt-4">
+            <div className="col-md-6 mt-4">
         <Card outline color="info">
             <CardBody>
             <CardTitle>{service.name}</CardTitle>
@@ -21,6 +22,8 @@ function Renderservices(props) {
     return (
         <div className="container">
             <div className="row">
+            <h2 className="m-3" >Services</h2>
+            <hr />
                 {servicecomp}
             </div>
         </div>
