@@ -3,17 +3,18 @@ import { Button,  Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { Component } from 'react';
 import { Link } from "react-router-dom";
 import { GlassMagnifier } from 'react-image-magnifiers';
+import { baseUrl } from '../shared/baseUrl';
 
 
 
 function RenderProduct({product}) {
-    
+   
     return(
          <>
             <div className="col-md-7 mt-4">
                 <GlassMagnifier
-                imageSrc={product.image} width="90%" square magnifierSize="50%"
-                imageAlt={product.image}
+                imageSrc={baseUrl + product.image} width="90%" square magnifierSize="50%"
+                imageAlt={baseUrl + product.image}
                 />
             </div>
 
@@ -33,7 +34,7 @@ function RenderProduct({product}) {
                 {/* <Button  size="lg" block  >Add to Cart</Button>
                 <Button className="d-none">Proceed to check out</Button>
                 <Button className="d-none">Keep Shopping</Button> */}
-                 <AddtoBag />   
+                 <AddtoBag cartname={product.name}/>   
                 
             </div>
         </>
@@ -42,6 +43,7 @@ function RenderProduct({product}) {
 
 
 function RenderReviews({reviews}) {
+    
     if (reviews) {
         return(
             <div className="col mt-5">
@@ -114,15 +116,17 @@ class AddtoBag extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isModal: false
+          isModal: false,
+          carts: []
                 
         };
     }
     
-    toggleModal = () =>  {
+    toggleModal = (event) =>  {
         this.setState({
             isModal: !this.state.isModal
         });
+        
     }
 
     
@@ -130,15 +134,24 @@ class AddtoBag extends Component {
         this.toggleModal();
     }
 
+    addCart(event) {
+        this.state.carts.push(this.props.cartname)
+        console.log('added' + this.state.carts);
+        event.preventDefault();
+    };
+
+   
     
     render() {
         return(
             <>
-                <Button onClick={this.toggleModal} size="lg" block> <i class="fa fa-shopping-bag" /> Add to Bag
+                <Button onClick={() =>{ this.toggleModal();
+                                    this.addCart(this.props.cart); }} size="lg" block> <i class="fa fa-shopping-bag" /> Add to Bag
                 </Button>
                 <Modal isOpen={this.state.isModal} toggle={this.toggleModal}>
                     <ModalHeader style={{ background: "#abd4fa" }} toggle={this.toggleModal}>Added to cart</ModalHeader>
                     <ModalBody>
+                        <h5 className="text-success">{`${this.state.carts}`}</h5>
                         <Button onClick={this.toggleModal}>Keep Shopping</Button> {' '}
                         <Button  style={{ color: "white" }} ><Link to='/checkout'>Proceed to check out</Link></Button>
                     </ModalBody>

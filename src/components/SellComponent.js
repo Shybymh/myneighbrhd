@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import {  Button, Label, Input, FormGroup, Modal, ModalBody, ModalHeader, Form } from 'reactstrap';
+import { baseUrl } from '../shared/baseUrl';
+import { Loading } from './LoadingComponent';
 
 class Rendersell extends Component {
 
@@ -24,20 +26,44 @@ class Rendersell extends Component {
 
 
     render() {
-        const sellcomp = this.props.sells.map(sell => {
+        const sellcomp = this.props.sells.sells.map(sell => {
             return(
-                <div className="row postcard mt-3">
-                    <div className="col-6 mt-3 mb-3">
-                        <img src={sell.image} alt={sell.name} width="100%"/>
+                <div className="row postcard mt-4">
+                    <div className="col-6  mt-3 mb-3 ">
+                        <img src={baseUrl + sell.image} alt={sell.name} width="100%"/>
                     </div>
                     <div className="col-6 mt-3 mt-md-5 mb-3">
-                        <h2 className="m-lg-5">{sell.name}</h2>
-                        <h5 className="m-lg-5">{sell.address}</h5>
+                        <h5 className="m-lg-5 text-primary"><i class="fa fa-user"/>{sell.username}</h5>
+                        <h5 className="m-lg-5">{sell.name}</h5>
+                        <h6 className="m-lg-5">{sell.address}</h6>
                         <h6 className="m-lg-5">{sell.description}</h6>
+                        <Button className="m-lg-5"><i class="fa fa-envelope"/>Message</Button>
+                       
                     </div>
-            </div>
+                </div>
+            
             );
         });
+        if (this.props.sells.isLoading) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        if (this.props.sells.errMess) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <h6>{this.props.sells.errMess}</h6>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
 
         return (
             <>

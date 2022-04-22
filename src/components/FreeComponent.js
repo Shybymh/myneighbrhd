@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import {  Button, Label, Input, FormGroup, Modal, ModalBody, ModalHeader, Form } from 'reactstrap';
+import { baseUrl } from '../shared/baseUrl';
+import { Loading } from './LoadingComponent';
 
 
 class Renderfree extends Component {
@@ -23,20 +25,43 @@ class Renderfree extends Component {
         event.preventDefault();
     }
     render() {
-        const freecomp = this.props.frees.map(free => {
+        const freecomp = this.props.frees.frees.map(free => {
             return(
-                <div className="row postcard mt-3">
-                    <div className="col-6 mt-3 mb-3">
-                        <img src={free.image} alt={free.name} width="100%"/>
+                <div className="row postcard mt-4">
+                    <div className="col-6  mt-3 mb-3 ">
+                        <img src={baseUrl + free.image} alt={free.name} width="100%"/>
                     </div>
                     <div className="col-6 mt-3 mt-md-5 mb-3">
-                        <h2 className="m-lg-5">{free.name}</h2>
+                    <h5 className="m-lg-5 text-primary"><i class="fa fa-user"/>{free.username}</h5>
+                        <h5 className="m-lg-5">{free.name}</h5>
                         <h5 className="m-lg-5">{free.address}</h5>
                         <h6 className="m-lg-5">{free.description}</h6>
+                        <Button className="m-lg-5"><i class="fa fa-envelope"/>Message</Button>
                     </div>
                 </div>
             );
         });
+
+        if (this.props.frees.isLoading) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        if (this.props.frees.errMess) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <h6>{this.props.frees.errMess}</h6>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
 
         return (
             <>

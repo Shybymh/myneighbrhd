@@ -34,26 +34,25 @@ class SecondNav extends Component {
     render() {
         return (
             <React.Fragment>
-
-
-                            <Nav className="justify-content-center" id="tabnav">
-                            <NavItem>
-                                <NavLink className="nav-link" to="/paintings"> Paintings
-                                    </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to="/accessories"> Accessories
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to="/jewellery"> Jewellery
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to="/artists"> Artists
-                                </NavLink>
-                            </NavItem>
-                            </Nav>
+                <Nav className="justify-content-center" id="tabnav">
+                <NavItem>
+                    <NavLink className="nav-link" to="/paintings"> Paintings
+                        </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink className="nav-link" to="/accessories"> Accessories
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink className="nav-link" to="/jewellery"> Jewellery
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink className="nav-link" to="/artists"> Artists
+                    </NavLink>
+                </NavItem>
+                </Nav>
+            </React.Fragment>
                
                  {/* <Navbar id="secondNav" sticky="top" expand="md">
 
@@ -177,7 +176,7 @@ class SecondNav extends Component {
                     </Tabs>
                 </Nav>
                 </Navbar> */}
-            </React.Fragment>
+            
         );
     }
 }

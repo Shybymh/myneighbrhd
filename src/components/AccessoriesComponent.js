@@ -1,12 +1,15 @@
 import React from "react";
 import { Card, CardImg, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
+import { Loading } from './LoadingComponent';
 
 function RenderAccessories({accessory}) {
+    
     return(
         <Card>
             <Link to={`/accessories/${accessory.id}`}>
-                <CardImg width="100%" src={accessory.image} alt={accessory.name} />
+                <CardImg width="100%" src={baseUrl + accessory.image} alt={accessory.name} />
                 <CardBody><h5>{accessory.name}</h5> <h6> {accessory.price}</h6></CardBody>
             </Link>
         </Card>
@@ -15,13 +18,34 @@ function RenderAccessories({accessory}) {
 
 
 function ShowAccessories(props) {
-    const showaccessories = props.accessories.filter(accessory => accessory.accessorypage).map(accessory => {
+    const showaccessories = props.accessories.accessories.filter(accessory => accessory.accessorypage).map(accessory => {
        return (
             <div key={accessory.id} className="col-md-4 mt-1">
                 <RenderAccessories accessory={accessory} />
             </div>
         );
-    })
+    });
+
+    if (props.accessories.isLoading) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    if (props.accessories.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h6>{props.accessories.errMess}</h6>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="container">

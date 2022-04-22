@@ -84,6 +84,10 @@ class Header extends Component {
                                             <DropdownItem className="dropdownitem"><Link to='/jewellery'>
                                             Jewellery</Link>
                                             </DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem className="dropdownitem"><Link to='/artists'>
+                                            Artists</Link>
+                                            </DropdownItem>
                                         </DropdownMenu>
                                     </UncontrolledDropdown>
                                     

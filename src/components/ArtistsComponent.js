@@ -1,4 +1,7 @@
 import React from "react";
+import { baseUrl } from '../shared/baseUrl';
+
+
 //import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
 //import { Media } from 'reactstrap';
 
@@ -6,27 +9,15 @@ import React from "react";
 
 
 
-// function RenderArtists({artist}) {
-//     return(
-       
-//         <div>
-        
-//         </div>
-
-//     )
-// }
-
-// Renders Breadcrumb, heading and campsites' images and names 
-// painting={this.state.paintings.filter(painting => painting.featured)[0]}
 
 function ShowArtists(props) {
-    const showartists = props.artists.map(artist => {
+    const showartists = props.artists.artists.map(artist => {
        return (
-            <div key={artist.id} className="row m-3">
-                <div className="col-sm-6">
-                   <img src={artist.image} width="70%" alt="artist"/>
+            <div key={artist.id} className="row postcard mt-3 ">
+                <div className="col-sm-6  mt-3 mb-3">
+                   <img src={baseUrl + artist.image} width="70%" alt="artist"/>
                 </div>
-                <div className="col-sm-6 text-align-center">
+                <div className="col-sm-6 text-align-center mt-3 ">
                   <h5> <strong> {artist.name} </strong> </h5>
                     <i class="fa fa-star" />{' '}
                     <i class="fa fa-star"/> {' '}
@@ -38,12 +29,6 @@ function ShowArtists(props) {
                   <h6 className="mt-3"> {artist.description} </h6>
                   <i class="fa fa-envelope fa-lg text-primary"/> Contact
                 </div>
-                {/* <div className="col-sm-4 text-align-center">
-                  <h6> <strong> {artist.name} </strong> <br /> {artist.description} </h6>
-                </div> */}
-
-
-                {/* <RenderArtists artist={artist} /> */}
             </div>
         );
     })
@@ -51,15 +36,15 @@ function ShowArtists(props) {
     return (
         <div className="container">
             <div className='row'>
-                <div className='col'>
-                    
-                    <h2>Artists</h2>
-                    <hr />
+                <div className="col-4">
+                    <h2 className="mt-3">Our Artists</h2>
+                   
                 </div>
+                <hr />
             </div>
-            <div className="row">
+           
                 {showartists}
-            </div>
+           
         </div>
     );
 }
@@ -68,16 +53,4 @@ export default ShowArtists;
 
 
 
- // <Card>
-            // {/* <Link to={`/directory/${campsite.id}`}> */}
-            //     {/* <CardImg width="100%" src={artist.image} alt={artist.name} />
-            //     <CardBody><h6>{artist.name}</h6></CardBody> */}
-            // {/* </Link> */}
-
-            // {/* <CardImg width="100%" src={artist.image} alt="Artist Logo" />
-        // <CardBody>
-        //   <CardTitle>{artist.name}</CardTitle>
-        //   <CardText><small>{artist.description}</small></CardText>
-        // </CardBody>
-
-        // </Card> */}
+ 

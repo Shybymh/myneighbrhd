@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import Footer from './FooterComponent';
@@ -7,53 +7,112 @@ import ProductDisplay from './ProductDisplayComponent';
 import ShowPaintings from './PaintingsComponent';
 import ShowAccessories from './AccessoriesComponent';
 import ShowJewellery from './JewelleryComponent';
+import ShowArtists from './ArtistsComponent';
 import CheckoutPage from './CheckoutComponent';
 import EventsComp from './EventsComponent';
 import Renderservices from './ServicesComponent';
 import Renderfree from './FreeComponent';
 import Rendersell from './SellComponent';
-import { ARTISTS } from '../shared/artists';
-import { ACCESSORIES } from '../shared/accessories';
-import { JEWELLERY } from '../shared/jewellery';
-import { PAINTINGS } from '../shared/paintings';
-import { REVIEWS } from '../shared/reviews';
-import { EVENTS } from '../shared/events';
-import { SERVICES } from '../shared/services';
-import { FREES } from '../shared/frees';
-import { SELLS } from '../shared/sells';
-import { DEALS } from '../shared/deals';
+import { connect } from 'react-redux';
+import { fetchPaintings, fetchAccessories, fetchDeals, fetchEvents, fetchFrees, fetchJewellery, fetchReviews, fetchSells, fetchServices, fetchArtists } from '../redux/ActionCreators';
+
+const mapStateToProps = state => {
+  return {
+    paintings: state.paintings,
+    accessories: state.accessories,
+    deals: state.deals,
+    events: state.events,
+    frees: state.frees,
+    jewellery: state.jewellery,
+    reviews: state.reviews,
+    sells: state.sells,
+    services: state.services,
+    artists: state.artists
+  }
+}
+
+
+const mapDispatchToProps = {
+  fetchAccessories: () => (fetchAccessories()),
+  fetchDeals: () => (fetchDeals()),
+  fetchEvents: () => (fetchEvents()),
+  fetchFrees: () => (fetchFrees()),
+  fetchJewellery: () => (fetchJewellery()),
+  fetchPaintings: () => (fetchPaintings()),
+  fetchReviews: () => (fetchReviews()),
+  fetchSells: () => (fetchSells()),
+  fetchServices: () => (fetchServices()),
+  fetchArtists: () => (fetchArtists())
+};
+
+
+
+// import { ARTISTS } from '../shared/artists';
+// import { ACCESSORIES } from '../shared/accessories';
+// import { JEWELLERY } from '../shared/jewellery';
+// import { PAINTINGS } from '../shared/paintings';
+// import { REVIEWS } from '../shared/reviews';
+// import { EVENTS } from '../shared/events';
+// import { SERVICES } from '../shared/services';
+// import { FREES } from '../shared/frees';
+// import { SELLS } from '../shared/sells';
+// import { DEALS } from '../shared/deals';
 
 
 
 
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        artists: ARTISTS,
-        accessories: ACCESSORIES,
-        jewellery: JEWELLERY,
-        paintings: PAINTINGS,
-        reviews: REVIEWS,
-        events: EVENTS,
-        services: SERVICES,
-        frees: FREES,
-        sells: SELLS,
-        deals: DEALS
-    };
+
+  componentDidMount() {
+    this.props.fetchAccessories();
+    this.props.fetchDeals();
+    this.props.fetchEvents();
+    this.props.fetchFrees();
+    this.props.fetchJewellery();
+    this.props.fetchPaintings();
+    this.props.fetchReviews();
+    this.props.fetchSells();
+    this.props.fetchServices();
+    this.props.fetchArtists();
   }
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //       artists: ARTISTS,
+  //       accessories: ACCESSORIES,
+  //       jewellery: JEWELLERY,
+  //       paintings: PAINTINGS,
+  //       reviews: REVIEWS,
+  //       events: EVENTS,
+  //       services: SERVICES,
+  //       frees: FREES,
+  //       sells: SELLS,
+  //       deals: DEALS
+  //   };
+  // }
 
   
   render() {
     const ProductPlaceholder = () => {
       return (
         <Home 
-          painting={this.state.paintings.filter(painting => painting.featured)[0]}
-          accessory={this.state.accessories.filter(accessory => accessory.featured)[0]}
-          jewell={this.state.jewellery.filter(jewell => jewell.featured)[0]}
-          eVent={this.state.events.filter(eVent => eVent.featured)[0]}
-          deaL={this.state.deals.filter(deaL => deaL.featured)[0]}
+          painting={this.props.paintings.paintings.filter(painting => painting.featured)[0]}
+          paintingsLoading={this.props.paintings.isLoading}
+          paintingsErrMess={this.props.paintings.errMess}
+          accessory={this.props.accessories.accessories.filter(accessory => accessory.featured)[0]}
+          accessoriesLoading={this.props.accessories.isLoading}
+          accessoriesErrMess={this.props.accessories.errMess}
+          jewell={this.props.jewellery.jewellery.filter(jewell => jewell.featured)[0]}
+          jewelleryLoading={this.props.jewellery.isLoading}
+          jewelleryErrMess={this.props.jewellery.errMess}
+          eVent={this.props.events.events.filter(eVent => eVent.featured)[0]}
+          eventsLoading={this.props.events.isLoading}
+          eventsErrMess={this.props.events.errMess}
+          deaL={this.props.deals.deals.filter(deaL => deaL.featured)[0]}
+          dealsLoading={this.props.deals.isLoading}
+          dealsErrMess={this.props.deals.errMess}
         />
       );
     }
@@ -61,12 +120,12 @@ class Main extends Component {
     const SelectedProduct = ({match}) => {
       return (
         <ProductDisplay 
-          painting={this.state.paintings.filter(painting => painting.id === +match.params.paintingId)[0]}
-          accessory={this.state.accessories.filter(accessory => accessory.id === +match.params.accessoryId)[0]}
-          jewell={this.state.jewellery.filter(jewell => jewell.id === +match.params.jewellId)[0]}
-          previews={this.state.reviews.filter(review => review.paintingId === +match.params.paintingId)}
-          areviews={this.state.reviews.filter(review => review.accessoryId === +match.params.accessoryId)}
-          jreviews={this.state.reviews.filter(review => review.jewellId === +match.params.jewellId)}
+          painting={this.props.paintings.paintings.filter(painting => painting.id === +match.params.paintingId)[0]}
+          accessory={this.props.accessories.accessories.filter(accessory => accessory.id === +match.params.accessoryId)[0]}
+          jewell={this.props.jewellery.jewellery.filter(jewell => jewell.id === +match.params.jewellId)[0]}
+          previews={this.props.reviews.reviews.filter(review => review.paintingId === +match.params.paintingId)}
+          areviews={this.props.reviews.reviews.filter(review => review.accessoryId === +match.params.accessoryId)}
+          jreviews={this.props.reviews.reviews.filter(review => review.jewellId === +match.params.jewellId)}
         />
       );
     };
@@ -79,14 +138,14 @@ class Main extends Component {
         <Header />
         <Switch>
           <Route exact path='/home' component={ProductPlaceholder} />
-          <Route exact path='/paintings' render={() => <ShowPaintings paintings={this.state.paintings} />}  />
-          <Route exact path='/accessories' render={() => <ShowAccessories accessories={this.state.accessories} />}  />
-          <Route exact path='/jewellery' render={() => <ShowJewellery jewellery={this.state.jewellery} />}  />
-          <Route exact path='/frees' render={() => <Renderfree frees={this.state.frees} />}  />
-          <Route exact path='/sells' render={() => <Rendersell sells={this.state.sells} />} />
-          {/* <Route exact path='/artists' render={() => <ShowArtists artists={this.state.artists} />}  /> */}
-          <Route exact path='/eventscomp' render={() => <EventsComp events={this.state.events} />}  />
-          <Route exact path='/services' render={() => <Renderservices services={this.state.services} />}  />
+          <Route exact path='/paintings' render={() => <ShowPaintings paintings={this.props.paintings} />}  />
+          <Route exact path='/accessories' render={() => <ShowAccessories accessories={this.props.accessories} />}  />
+          <Route exact path='/jewellery' render={() => <ShowJewellery jewellery={this.props.jewellery} />}  />
+          <Route exact path='/frees' render={() => <Renderfree frees={this.props.frees} />}  />
+          <Route exact path='/sells' render={() => <Rendersell sells={this.props.sells} />} />
+          <Route exact path='/artists' render={() => <ShowArtists artists={this.props.artists} />}  />
+          <Route exact path='/eventscomp' render={() => <EventsComp events={this.props.events} />}  />
+          <Route exact path='/services' render={() => <Renderservices services={this.props.services} />}  />
           <Route exact path='/paintings/:paintingId' component={SelectedProduct} />
           <Route exact path='/accessories/:accessoryId' component={SelectedProduct} />
           <Route exact path='/jewellery/:jewellId' component={SelectedProduct} />
@@ -100,4 +159,4 @@ class Main extends Component {
 }
 
 
-export default Main;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

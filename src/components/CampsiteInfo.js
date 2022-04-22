@@ -117,7 +117,7 @@ function RenderComments({comments}) {
 }
 
 // Renders Breadcrumb and campsite name dynamically. 
-function CampsiteInfo(props) {
+function Example(props) {
     if (props.campsite) {
         return(
             <div className="container">
@@ -141,4 +141,4 @@ function CampsiteInfo(props) {
     return <div />;
 }
 
-export default CampsiteInfo;
+export default Example;
