@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createForms } from 'react-redux-form';
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { Paintings } from './paintings';
@@ -11,7 +12,7 @@ import { Sells } from './sells';
 import { Services } from './services';
 import { Reviews } from './reviews';
 import { Artists } from "./artists";
-import { Carts } from './cart';
+import { InitialCheckoutform } from "./forms";
 
 
 export const ConfigureStore = () => {
@@ -27,7 +28,9 @@ export const ConfigureStore = () => {
             services: Services,
             reviews: Reviews,
             artists: Artists,
-            cart: Carts,
+            ...createForms({
+                checkoutForm: InitialCheckoutform
+            })
         }),
         applyMiddleware(thunk, logger)
 

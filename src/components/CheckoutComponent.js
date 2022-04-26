@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Button,  Label,  Modal, ModalBody, 
-    ModalHeader, Row, Col } from 'reactstrap';
+    ModalHeader, Row, Col, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
@@ -18,60 +18,65 @@ class CheckoutPage extends Component {
         this.state = {
             firstName: '',
             lastname: '',
+            street: '',
+            city: '',
+            statenm: '',
+            zipcode: '',
             phoneNum:'',
             email:'',
-            customization:'',
-            paymentType: '',
-            cardNum: '',
-            expiry: '',
+            specifications:'',
+            paymentradios: '',
+            cname: '',
+            cnumber: '',
             cvv: '',
-            
-            
+            expiry: '',
+            czipcode: '',
+            isModal: false,
+
             touched: {
                 firstName: false,
-                lastName: false,
+                lastname: false,
+                street: false,
+                city: false,
+                statenm: false,
+                zipcode: false,
                 phoneNum: false,
                 email: false,
-                cardNum: false,
+                specifications: false,
+                paymentradios: false,
+                cname: false,
+                cnumber: false,
+                cvv: false,
                 expiry: false,
-                cvv: false
+                czipcode: false
 
             }
         };
         
         this.handlePaymentType = this.handlePaymentType.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
-
-
-    
-
-    // handleBlur = (field) => () => {
-    //     this.setState({
-    //         touched: {...this.state.touched, [field]: true}
-    //     });
-    // }
-
-    // handleInputChange(event) {
-    //     const target = event.target;
-    //     const name = target.name;
-    //     const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    //     this.setState({
-    //         [name] : value
-    //     });
-    // }
 
     handlePaymentType (event) {
         const target = event.target;
         document.getElementById("ccDetails").style.display = (target.id === 'cc' ? "block" : "none");
     }
 
+    toggleModal() {
+                this.setState({
+                    isModal: !this.state.isModal
+                });
+             }
+
+    handleSubmit(values) {
+        this.props.resetCheckoutForm(values);
+        this.toggleModal();
+    }
+
     
 
     render() {
-
-        // const errors = this.validate(this.state.firstName, this.state.lastName, this.state.phoneNum, this.state.email);
 
         return(
             <React.Fragment>
@@ -81,7 +86,7 @@ class CheckoutPage extends Component {
                             <h2>Enter Your Details </h2>
                         </div>
                         <div className="col-md-10">
-                            <LocalForm >
+                            <Form model="checkoutForm" onSubmit={values => this.handleSubmit(values)} >
                                 <Row className="form-group">
                                     <Label htmlFor="firstName" md={2}>First Name</Label>
                                     <Col md={8}>
@@ -234,7 +239,6 @@ class CheckoutPage extends Component {
                                             className="form-control"
                                             validators={{
                                                 required,
-                                                minLength: minLength(10),
                                                 isNumber
                                             }}  
                                         />
@@ -245,7 +249,6 @@ class CheckoutPage extends Component {
                                             component="div"
                                             messages={{
                                                 required: 'Required',
-                                                minLength: 'Must be at least 2 characters',
                                                 isNumber: 'Enter a valid phone number'
                                             }}
                                         />
@@ -298,162 +301,147 @@ class CheckoutPage extends Component {
 
                                 <Row className="form-group">
                                     Payment Type
-                                    <div className='form-check'>
+                                    <div className='form-radio'>
                                         <div className='mb-1'>
                                             <Label check>
-                                                <Control.radio
+                                                <Input type="radio"
+                                                    value="pp"
                                                     name="paymentradios"
-                                                    model=".paymentradios"
-                                                    onClick={this.handlePaymentType} 
-                                                /> {' '}
-
+                                                    onClick={this.handlePaymentType} /> {' '}
                                                     <i class="fa fa-paypal fa-lg" /> Paypal
                                             </Label>
                                         </div>
                                         
                                         <div className='mb-1'>
                                             <Label check>
-                                                <Control.radio
+                                                <Input type="radio"
+                                                    value="cc"
                                                     name="paymentradios"
-                                                    model=".paymentradios"
                                                     id='cc'
-                                                    onClick={this.handlePaymentType} 
-                                                /> {' '}
-                                                <i class="fa fa-credit-card fa-lg" /> Credit card
+                                                    onClick={this.handlePaymentType} /> {' '}
+                                                    <i class="fa fa-credit-card fa-lg" /> Credit card
                                             </Label>
                                         </div>
                                     </div>
                                 </Row>
-                                
+                               
                            
                                 <div id="ccDetails" className="row cc-details">
 
                                     <Row className="form-group">
                                         <Label htmlFor="cname" md={2}>Name</Label>
-                                            <div className='col-md-8 mt-1'>
-                                                <Control.text  model=".cname" id="cname" name="name"
-                                                    placeholder="Name"
-                                                    className="form-control"
-                                                    validators={{
-                                                        required,
-                                                        minLength: minLength(2),
-                                                        maxLength: maxLength(15)
-                                                    }}  
+                                        <div className='col-md-8 mt-1'>
+                                            <Control.text  model=".cname" id="cname" name="name"
+                                                placeholder="Name"
+                                                className="form-control"
+                                            />
+                                            <Errors
+                                                className='text-danger'
+                                                model=".cname"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required',
+                                                    minLength: 'Must be at least 2 characters',
+                                                    maxLength: 'Must be 15 characters or less'
+                                                }}
                                                 />
-                                                <Errors
-                                                    className='text-danger'
-                                                    model=".cname"
-                                                    show="touched"
-                                                    component="div"
-                                                    messages={{
-                                                        required: 'Required',
-                                                        minLength: 'Must be at least 2 characters',
-                                                        maxLength: 'Must be 15 characters or less'
-                                                    }}
-                                                 />
-                                            </div>
+                                        </div>
                                     </Row>
                                     <Row className="form-group">
                                         <Label htmlFor="cnumber" md={2}>Card Number</Label>
-                                            <div className='col-md-8 mt-1'>
-                                                <Control.text  model=".cnumber" id="cnumber" name="cnumber"
-                                                    placeholder="Card Number"
-                                                    className="form-control"
-                                                    validators={{
-                                                        required,
-                                                        minLength: minLength(16)
-                                                    }} 
-                                                />
-                                                <Errors
-                                                    className='text-danger'
-                                                    model=".cnumber"
-                                                    show="touched"
-                                                    component="div"
-                                                    messages={{
-                                                        required: 'Required',
-                                                        minLength: 'Must be at least 2 characters'
-                                                    }}
-                                                />
-                                                    
-                                            </div>
+                                        <div className='col-md-8 mt-1'>
+                                            <Control.text  model=".cnumber" id="cnumber" name="cnumber"
+                                                placeholder="Card Number"
+                                                className="form-control"
+                                            />
+                                            <Errors
+                                                className='text-danger'
+                                                model=".cnumber"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required',
+                                                    minLength: 'Must be at least 16 characters'
+                                                }}
+                                            />
+                                                
+                                        </div>
                                     </Row>
                                     <Row className="form-group">
                                         <Label htmlFor="cvv" md={2}>CVV</Label>
-                                            <div className='col-md-8 mt-1'>
-                                                <Control.text  model=".cvv" id="cvv" name="cvv"
-                                                    placeholder="cvv"
-                                                    className="form-control"
-                                                    validators={{
-                                                        required,
-                                                        minLength: minLength(3)
-                                                    }} 
-                                                />
-                                                <Errors
-                                                    className='text-danger'
-                                                    model=".cvv"
-                                                    show="touched"
-                                                    component="div"
-                                                    messages={{
-                                                        required: 'Required',
-                                                        minLength: 'Must be at least 3 characters'
-                                                    }}
-                                                />
-                                                    
-                                            </div>
+                                        <div className='col-md-8 mt-1'>
+                                            <Control.text  model=".cvv" id="cvv" name="cvv"
+                                                placeholder="cvv"
+                                                className="form-control"
+                                            />
+                                            <Errors
+                                                className='text-danger'
+                                                model=".cvv"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required',
+                                                    minLength: 'Must be at least 3 characters'
+                                                }}
+                                            />
+                                                
+                                        </div>
                                     </Row>
                                     <Row className="form-group">
                                         <Label htmlFor="expiry" md={2}>Card Expiry</Label>
-                                            <div className='col-md-8 mt-1'>
-                                                <Control.text  model=".expiry" id="expiry" name="expiry"
-                                                    placeholder="expiry"
-                                                    className="form-control"
-                                                    validators={{
-                                                        required
-                                                    }}  
-                                                />
-                                                <Errors
-                                                    className='text-danger'
-                                                    model=".expiry"
-                                                    show="touched"
-                                                    component="div"
-                                                    messages={{
-                                                        required: 'Required'
-                                                    }}
-                                                />
-                                                    
-                                            </div>
+                                        <div className='col-md-8 mt-1'>
+                                            <Control.text  model=".expiry" id="expiry" name="expiry"
+                                                placeholder="expiry"
+                                                className="form-control"
+                                            />
+                                            <Errors
+                                                className='text-danger'
+                                                model=".expiry"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required'
+                                                }}
+                                            />
+                                                
+                                        </div>
                                     </Row>
                                     <Row className="form-group">
                                         <Label htmlFor="czipcode" md={2}>Zipcode</Label>
-                                            <div className='col-md-8 mt-1'>
-                                                <Control.text  model=".czipcode" id="czipcode" name="czipcode"
-                                                    placeholder="Zip code"
-                                                    className="form-control"
-                                                    validators={{
-                                                        required
-                                                    }}  
-                                                />
-                                                <Errors
-                                                    className='text-danger'
-                                                    model=".czipcode"
-                                                    show="touched"
-                                                    component="div"
-                                                    messages={{
-                                                        required: 'Required'
-                                                    }}
-                                                />
-                                                    
-                                            </div>
+                                        <div className='col-md-8 mt-1'>
+                                            <Control.text  model=".czipcode" id="czipcode" name="czipcode"
+                                                placeholder="Zip code"
+                                                className="form-control"
+                                            />
+                                            <Errors
+                                                className='text-danger'
+                                                model=".czipcode"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required'
+                                                }}
+                                            /> 
+                                        </div>
                                     </Row>
                                     
                                 </div>
                                         
                                 <Row className="form-group">
                                     <div className='col-md-8 mt-1'>
-                                        <Checked />
+                                    <Button type="submit"  color="primary"> Submit
+                                    </Button>
+                                        <Modal isOpen={this.state.isModal} toggle={this.toggleModal}>
+                                            <ModalHeader style={{ background: "#abd4fa" }} toggle={this.toggleModal}>Confirmation</ModalHeader>
+                                            <ModalBody >
+                                                <h5>Thank you!. Your order is confirmed.</h5>
+                                                <Button><Link to='/home'>OK</Link></Button>
+                                            </ModalBody>
+                                        </Modal>
                                     </div>
                                 </Row>
-                            </LocalForm>
+                            </Form>
                            
                         </div>
                     </div>
@@ -464,43 +452,8 @@ class CheckoutPage extends Component {
     }
 }
 
-class Checked extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          isModal: false
-                
-        };
-    }
-    
-    toggleModal = () =>  {
-        this.setState({
-            isModal: !this.state.isModal
-        });
-    }
 
-    
-    handleSubmit() {
-        this.toggleModal();
-    }
 
-    
-    render() {
-        return(
-            <>
-                <Button onClick={this.toggleModal} color="primary"> Submit
-                </Button>
-                <Modal isOpen={this.state.isModal} toggle={this.toggleModal}>
-                    <ModalHeader style={{ background: "#abd4fa" }} toggle={this.toggleModal}>Confirmation</ModalHeader>
-                    <ModalBody >
-                        <h5>Thank you!. Your order is confirmed.</h5>
-                        <Button><Link to='/home'>OK</Link></Button>
-                    </ModalBody>
-                </Modal>
-            </>
-        );
-    }
-}
 
 export default CheckoutPage;
 

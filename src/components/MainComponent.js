@@ -14,7 +14,11 @@ import Renderservices from './ServicesComponent';
 import Renderfree from './FreeComponent';
 import Rendersell from './SellComponent';
 import { connect } from 'react-redux';
-import { fetchPaintings, fetchAccessories, fetchDeals, fetchEvents, fetchFrees, fetchJewellery, fetchReviews, fetchSells, fetchServices, fetchArtists } from '../redux/ActionCreators';
+import { actions } from 'react-redux-form';
+import { fetchPaintings, fetchAccessories, 
+      fetchDeals, fetchEvents, fetchFrees, 
+      fetchJewellery, fetchReviews, fetchSells, 
+      fetchServices, fetchArtists } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -42,7 +46,8 @@ const mapDispatchToProps = {
   fetchReviews: () => (fetchReviews()),
   fetchSells: () => (fetchSells()),
   fetchServices: () => (fetchServices()),
-  fetchArtists: () => (fetchArtists())
+  fetchArtists: () => (fetchArtists()),
+  resetCheckoutForm: () => (actions.reset('checkoutForm'))
 };
 
 
@@ -149,7 +154,7 @@ class Main extends Component {
           <Route exact path='/paintings/:paintingId' component={SelectedProduct} />
           <Route exact path='/accessories/:accessoryId' component={SelectedProduct} />
           <Route exact path='/jewellery/:jewellId' component={SelectedProduct} />
-          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route exact path='/checkout' render={() => <CheckoutPage resetCheckoutForm={this.props.resetCheckoutForm} /> } />
           <Redirect to='/home' />
         </Switch>
         <Footer />

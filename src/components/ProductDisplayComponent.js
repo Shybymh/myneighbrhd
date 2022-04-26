@@ -16,6 +16,7 @@ function RenderProduct({product}) {
                 imageSrc={baseUrl + product.image} width="90%" square magnifierSize="50%"
                 imageAlt={baseUrl + product.image}
                 />
+
             </div>
 
             <div className="col-md-4 mt-5">
@@ -31,10 +32,7 @@ function RenderProduct({product}) {
                 <h5>{product.sales}</h5>
                 <h5>{product.description}</h5>
                 <h5><i class="fa fa-truck" /> {' '} Free shipping</h5>
-                {/* <Button  size="lg" block  >Add to Cart</Button>
-                <Button className="d-none">Proceed to check out</Button>
-                <Button className="d-none">Keep Shopping</Button> */}
-                 <AddtoBag cartname={product.name}/>   
+                 <AddtoBag />   
                 
             </div>
         </>
@@ -116,13 +114,12 @@ class AddtoBag extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isModal: false,
-          carts: []
+          isModal: false
                 
         };
     }
     
-    toggleModal = (event) =>  {
+    toggleModal = () =>  {
         this.setState({
             isModal: !this.state.isModal
         });
@@ -134,24 +131,15 @@ class AddtoBag extends Component {
         this.toggleModal();
     }
 
-    addCart(event) {
-        this.state.carts.push(this.props.cartname)
-        console.log('added' + this.state.carts);
-        event.preventDefault();
-    };
-
-   
     
     render() {
         return(
             <>
-                <Button onClick={() =>{ this.toggleModal();
-                                    this.addCart(this.props.cart); }} size="lg" block> <i class="fa fa-shopping-bag" /> Add to Bag
+                <Button onClick={this.toggleModal} size="lg" block> <i class="fa fa-shopping-bag" /> Add to Bag
                 </Button>
                 <Modal isOpen={this.state.isModal} toggle={this.toggleModal}>
                     <ModalHeader style={{ background: "#abd4fa" }} toggle={this.toggleModal}>Added to cart</ModalHeader>
                     <ModalBody>
-                        <h5 className="text-success">{`${this.state.carts}`}</h5>
                         <Button onClick={this.toggleModal}>Keep Shopping</Button> {' '}
                         <Button  style={{ color: "white" }} ><Link to='/checkout'>Proceed to check out</Link></Button>
                     </ModalBody>

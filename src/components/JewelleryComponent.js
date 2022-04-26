@@ -7,7 +7,7 @@ import { Loading } from './LoadingComponent';
 function RenderJewellery({jewell}) {
     
     return(
-        <Card>
+        <Card className="p-2">
             <Link to={`/jewellery/${jewell.id}`}>
                 <CardImg width="100%" src={baseUrl + jewell.image} alt={jewell.name} />
                 <CardBody><h5>{jewell.name}</h5> <h6> {jewell.price}</h6></CardBody>
@@ -20,7 +20,7 @@ function RenderJewellery({jewell}) {
 function ShowJewellery(props) {
     const showjewellery = props.jewellery.jewellery.filter(jewell => jewell.jewellerypage).map(jewell => {
        return (
-            <div key={jewell.id} className="col-md-4 mt-3">
+            <div key={jewell.id} className="col-md-5 mt-4">
                 <RenderJewellery jewell={jewell} />
             </div>
         );
@@ -54,7 +54,7 @@ function ShowJewellery(props) {
                     <hr />
                 </div>
             </div>
-            <div className="row">
+            <div className="row justify-content-center">
                 {showjewellery}
             </div>
         </div>

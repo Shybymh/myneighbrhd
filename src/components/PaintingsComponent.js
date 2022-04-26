@@ -11,7 +11,7 @@ import { Loading } from './LoadingComponent';
 function RenderPaintings({painting}) {
    
     return(
-        <Card>
+        <Card className="p-2">
             <Link to={`/paintings/${painting.id}`}>
                 <CardImg width="100%" src={baseUrl + painting.image} alt={painting.name} />
                 <CardBody><h5>{painting.name}</h5> <h6> {painting.price}</h6></CardBody>
@@ -21,11 +21,10 @@ function RenderPaintings({painting}) {
 }
 
 
-
 function ShowPaintings(props) {
     const showpaintings = props.paintings.paintings.filter(painting => painting.paintingpage).map(painting => {
        return (
-            <div key={painting.id} className="col-md-5 m-1">
+            <div key={painting.id} className="col-md-5 mt-4">
                 <RenderPaintings painting={painting} />
             </div>
         );
@@ -59,7 +58,7 @@ function ShowPaintings(props) {
                     <hr />
                 </div>
             </div>
-            <div className="row">
+            <div className="row justify-content-center">
                 {showpaintings}
             </div>
             

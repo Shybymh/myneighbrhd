@@ -12,11 +12,6 @@ h5,h6,p {
 
 
 
-/* #story {
-  padding: 30px 150px;
-  align-items: center;
-  background-color: aliceblue;
-} */
 .fa-star{
   color: gold;
 }
@@ -57,9 +52,7 @@ Button {
   transform:scale(1.01);
 }
 
-/*.card-deck{
-    margin: 50px 50px;
-}*/
+
 
 .navbar{
   background-color: #073057c5;
@@ -76,39 +69,14 @@ Button {
 
 
 
-/* .DropdownItem{
-  background: #073057c5;
-} */
-
-
-
-/* #secondNav {
-  background-color: white;
-  align-items: center;
-} */
-
-/* #tabnav{
-  background-color: white;
-  border-bottom: black;
-} */
-
-
-
-.site-footer{
+footer{
   background-color: #b3e2ce;
   padding: 20px 0;
   margin-top: 20px;
+  position: sticky;
 }
 
-/* #localArtist{
-  margin: 0px;
-  padding: 15px;
-  color: #d87683;
-  background-color: white;
-} */
-/* #local{
-  color: #d87683;
-} */
+
 
 .card-columns{
   margin-top: 15px;
@@ -133,38 +101,7 @@ a:hover {
   color: inherit;
 }
 
-/* #sidebar { 
-  min-width: 150px;
-  max-width: 150px;
-  margin: 0;
-  padding: 0;
-  color: white;
-  transition: all 0.5s;
-} */
 
-/* a,
-a:hover,
-a:focus {
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s;
-} */
- 
-/*#sidebar ul li a {
-  padding: 20px;
-  
-  font-size: 1.2em;
-  display: block;
-}
-
-#sidebar ul li a:hover {
-  width: auto;
-  color: rgb(172, 165, 165);
-  background: rgb(117, 116, 116);
-} 
- events page */
-/**/
- 
 
 .postcard {
   flex-wrap: wrap;
@@ -182,9 +119,7 @@ a:focus {
   background-color: rgb(250, 246, 246);
 }
 
-  /* .postcard__title {
-    font-size: 1.75rem;
-  } */
+  
 
   .postcard__img {
     max-height: 180px;

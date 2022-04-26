@@ -1,10 +1,10 @@
 import React, { Component }  from 'react';
 import { Nav, Navbar,  NavbarToggler, Collapse, NavItem, NavbarBrand,   
-Button, Modal, ModalHeader, ModalBody, Form , FormGroup, Input, Label, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
+        Button, Modal, ModalHeader, ModalBody, Form , FormGroup, Input, Label, 
+        UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
 
-// Header Component rendering Jumbotron and Navigation bar
+
 
 class Header extends Component {
 
@@ -21,11 +21,8 @@ class Header extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.nameUser = this.nameUser.bind(this);
-       
         
     }
-
-    
 
     toggleNav() {
         this.setState({
@@ -41,7 +38,6 @@ class Header extends Component {
 
     nameUser() {
         (this.userName.value) ? this.setState({ status: `${this.userName.value}`}) : this.setState({ status: 'Login'})
-
        
     }
     
@@ -51,7 +47,6 @@ class Header extends Component {
         this.nameUser();
         event.preventDefault();
     }
-
     
 
     render() {
@@ -59,7 +54,7 @@ class Header extends Component {
             <React.Fragment>
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto"  href="/"><h4>MyNeighborhood</h4></NavbarBrand>
+                        <NavbarBrand className="mr-auto"  href="/home"><h4>MyNeighborhood</h4></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav className="ms-auto" navbar>

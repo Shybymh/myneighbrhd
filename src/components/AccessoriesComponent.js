@@ -7,7 +7,7 @@ import { Loading } from './LoadingComponent';
 function RenderAccessories({accessory}) {
     
     return(
-        <Card>
+        <Card className="p-2">
             <Link to={`/accessories/${accessory.id}`}>
                 <CardImg width="100%" src={baseUrl + accessory.image} alt={accessory.name} />
                 <CardBody><h5>{accessory.name}</h5> <h6> {accessory.price}</h6></CardBody>
@@ -20,7 +20,7 @@ function RenderAccessories({accessory}) {
 function ShowAccessories(props) {
     const showaccessories = props.accessories.accessories.filter(accessory => accessory.accessorypage).map(accessory => {
        return (
-            <div key={accessory.id} className="col-md-4 mt-1">
+            <div key={accessory.id} className="col-md-5 mt-4">
                 <RenderAccessories accessory={accessory} />
             </div>
         );
@@ -56,7 +56,7 @@ function ShowAccessories(props) {
                     <hr />
                 </div>
             </div>
-            <div className="row">
+            <div className="row justify-content-center">
                 {showaccessories}
             </div>
         </div>

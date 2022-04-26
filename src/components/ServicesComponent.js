@@ -7,16 +7,16 @@ function Renderservices(props) {
     const servicecomp = props.services.services.map(service => {
         return(
             <div className="col-md-6 mt-4">
-        <Card outline color="info">
-            <CardBody>
-            <CardTitle>{service.name}</CardTitle>
-            <hr />
-            <CardText>{service.contact1}</CardText>
-            <CardText>{service.contact2}</CardText>
-            <CardText>{service.contact3}</CardText>
-            </CardBody>
-        </Card>
-        </div>
+                <Card outline color="info">
+                    <CardBody>
+                        <CardTitle>{service.name}</CardTitle>
+                        <hr />
+                        <CardText>{service.contact1}</CardText>
+                        <CardText>{service.contact2}</CardText>
+                        <CardText>{service.contact3}</CardText>
+                    </CardBody>
+                </Card>
+            </div>
         );
     });
 
@@ -44,8 +44,8 @@ function Renderservices(props) {
     return (
         <div className="container">
             <div className="row">
-            <h2 className="m-3" >Services</h2>
-            <hr />
+                <h2 className="m-3" >Services</h2>
+                <hr />
                 {servicecomp}
             </div>
         </div>

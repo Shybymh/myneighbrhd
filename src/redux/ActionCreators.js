@@ -403,10 +403,6 @@ export const artistsFailed = errMess => ({
     payload: errMess
 });
 
-export const addCarts = carts => ({
-    type: ActionTypes.ADD_CART,
-    payload: carts
-}); 
 
 
 

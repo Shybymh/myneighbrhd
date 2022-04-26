@@ -32,7 +32,7 @@ class Renderfree extends Component {
                         <img src={baseUrl + free.image} alt={free.name} width="100%"/>
                     </div>
                     <div className="col-6 mt-3 mt-md-5 mb-3">
-                    <h5 className="m-lg-5 text-primary"><i class="fa fa-user"/>{free.username}</h5>
+                        <h5 className="m-lg-5 text-primary"><i class="fa fa-user"/>{free.username}</h5>
                         <h5 className="m-lg-5">{free.name}</h5>
                         <h5 className="m-lg-5">{free.address}</h5>
                         <h6 className="m-lg-5">{free.description}</h6>
@@ -82,28 +82,28 @@ class Renderfree extends Component {
                 </div>
 
                 <Modal id="sellModal" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                <ModalHeader toggle={this.toggleModal}>Add items</ModalHeader>
-                <ModalBody>
-                    <Form onSubmit={this.handleAddfree}>
-                        <FormGroup>
-                            <Label htmlFor="itemname">Enter item name</Label>
-                            <Input type="text" id="itemname" name="itemname" 
-                                innerRef={input => this.crossroad = input} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor="price">Enter item details/condition</Label>
-                            <Input type="text" id="price" name="price" 
-                                innerRef={input => this.crossroad = input} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor="photo">Add a picture of the item</Label>
-                            <Input type="file" multiple accept="image/*" id="photo" name="photo" 
-                                innerRef={input => this.name = input} />
-                        </FormGroup>
-                        
-                        <Button className="mt-1" type="submit" value="submit" color="primary">Submit</Button>
-                    </Form>
-                </ModalBody>
+                    <ModalHeader toggle={this.toggleModal}>Add items</ModalHeader>
+                    <ModalBody>
+                        <Form onSubmit={this.handleAddfree}>
+                            <FormGroup>
+                                <Label htmlFor="itemname">Enter item name</Label>
+                                <Input type="text" id="itemname" name="itemname" 
+                                    innerRef={input => this.crossroad = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="price">Enter item details/condition</Label>
+                                <Input type="text" id="price" name="price" 
+                                    innerRef={input => this.crossroad = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="photo">Add a picture of the item</Label>
+                                <Input type="file" multiple accept="image/*" id="photo" name="photo" 
+                                    innerRef={input => this.name = input} />
+                            </FormGroup>
+                            
+                            <Button className="mt-1" type="submit" value="submit" color="primary">Submit</Button>
+                        </Form>
+                    </ModalBody>
                 </Modal>
             </>
         )

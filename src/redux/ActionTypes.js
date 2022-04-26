@@ -37,6 +37,3 @@ export const REVIEWS_FAILED = 'REVIEWS_FAILED';
 export const ADD_ARTISTS = 'ADD_ARTISTS';
 export const ARTISTS_LOADING = 'ARTISTS_LOADING';
 export const ARTISTS_FAILED = 'ARTISTS_FAILED';
-
-export const ADD_CART = 'ADD_CART';
-export const DELETE_CART = 'DELETE_CART';
