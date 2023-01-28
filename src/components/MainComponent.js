@@ -52,21 +52,6 @@ const mapDispatchToProps = {
 
 
 
-// import { ARTISTS } from '../shared/artists';
-// import { ACCESSORIES } from '../shared/accessories';
-// import { JEWELLERY } from '../shared/jewellery';
-// import { PAINTINGS } from '../shared/paintings';
-// import { REVIEWS } from '../shared/reviews';
-// import { EVENTS } from '../shared/events';
-// import { SERVICES } from '../shared/services';
-// import { FREES } from '../shared/frees';
-// import { SELLS } from '../shared/sells';
-// import { DEALS } from '../shared/deals';
-
-
-
-
-
 class Main extends Component {
 
   componentDidMount() {
@@ -82,21 +67,7 @@ class Main extends Component {
     this.props.fetchArtists();
   }
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //       artists: ARTISTS,
-  //       accessories: ACCESSORIES,
-  //       jewellery: JEWELLERY,
-  //       paintings: PAINTINGS,
-  //       reviews: REVIEWS,
-  //       events: EVENTS,
-  //       services: SERVICES,
-  //       frees: FREES,
-  //       sells: SELLS,
-  //       deals: DEALS
-  //   };
-  // }
+ 
 
   
   render() {

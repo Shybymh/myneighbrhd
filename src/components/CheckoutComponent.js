@@ -74,7 +74,6 @@ class CheckoutPage extends Component {
         this.toggleModal();
     }
 
-    
 
     render() {
 

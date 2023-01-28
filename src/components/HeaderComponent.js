@@ -47,7 +47,6 @@ class Header extends Component {
         this.nameUser();
         event.preventDefault();
     }
-    
 
     render() {
         return (
