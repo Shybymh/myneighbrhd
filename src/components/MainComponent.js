@@ -110,7 +110,7 @@ class Main extends Component {
 
     return (
       <div>
-        <img src="/assets/images/header 2.jpg" alt="neighborhood" width="100%" height="120" />
+        {/* <img src="/assets/images/header3.jpg" alt="neighborhood" width="100%" height="120" /> */}
         <Header />
         <Switch>
           <Route exact path='/home' component={ProductPlaceholder} />
