@@ -53,7 +53,8 @@ class Header extends Component {
             <React.Fragment>
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto"  href="/home"><h4>MyNeighborhood</h4></NavbarBrand>
+                        {/* <NavbarBrand className="mr-auto"  href="/home"><h4>MyNeighborhood</h4></NavbarBrand> */}
+                        <NavbarBrand className=" mr-auto"  href="/home"><h4>MyNeighborhood</h4></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav className="ms-auto" navbar>
@@ -90,15 +91,15 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link text-light" to="/eventscomp"> Events
+                                    <NavLink className="nav-link text-light" to="/events"> Events
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link text-light" to="/frees"> Free 
+                                    <NavLink className="nav-link text-light" to="/free"> Free 
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link text-light" to="/sells"> Sell
+                                    <NavLink className="nav-link text-light" to="/sell"> Sell
                                     </NavLink>
                                 </NavItem>
                             </Nav>

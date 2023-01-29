@@ -117,10 +117,10 @@ class Main extends Component {
           <Route exact path='/paintings' render={() => <ShowPaintings paintings={this.props.paintings} />}  />
           <Route exact path='/accessories' render={() => <ShowAccessories accessories={this.props.accessories} />}  />
           <Route exact path='/jewellery' render={() => <ShowJewellery jewellery={this.props.jewellery} />}  />
-          <Route exact path='/frees' render={() => <Renderfree frees={this.props.frees} />}  />
-          <Route exact path='/sells' render={() => <Rendersell sells={this.props.sells} />} />
+          <Route exact path='/free' render={() => <Renderfree frees={this.props.frees} />}  />
+          <Route exact path='/sell' render={() => <Rendersell sells={this.props.sells} />} />
           <Route exact path='/artists' render={() => <ShowArtists artists={this.props.artists} />}  />
-          <Route exact path='/eventscomp' render={() => <EventsComp events={this.props.events} />}  />
+          <Route exact path='/events' render={() => <EventsComp events={this.props.events} />}  />
           <Route exact path='/services' render={() => <Renderservices services={this.props.services} />}  />
           <Route exact path='/paintings/:paintingId' component={SelectedProduct} />
           <Route exact path='/accessories/:accessoryId' component={SelectedProduct} />
