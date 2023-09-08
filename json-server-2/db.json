@@ -1,0 +1,516 @@
+{
+  "accessories": [
+    {
+      "id": 0,
+      "name": "Pink hair accessory",
+      "image": "images/acc1.jpg",
+      "elevation": 1233,
+      "price":"$10",
+      "sales":"12 sales",
+      "featured": false,
+      "accessorypage": true,
+      "description": "Handmade hair accessory for toddler."
+  },
+  {
+      "id": 1,
+      "name": "Pink beanie",
+      "image": "images/acc2.jpg",
+      "elevation": 1233,
+      "price":"$10",
+      "sales":"10 sales",
+      "featured": false,
+      "accessorypage": true,
+      "description": "Crochet pink beanie for toddlers."
+  },
+  {
+      "id": 2,
+      "name": "Fall color beanie",
+      "image": "images/acc3.jpg",
+      "elevation": 1233,
+      "price": "$10",
+      "sales": "29 sales",
+      "featured": false,
+      "accessorypage": true,
+      "description": "Crochet beanie for toddlers. Perfect for fall."
+  },
+  {
+      "id": 3,
+      "name": "Hair Accessory",
+      "image": "images/acc4.jpg",
+      "elevation": 1233,
+      "price": "$5",
+      "sales": "29 sales",
+      "featured": false,
+      "accessorypage": true,
+      "description": "Hair accessory for toddlers, golden lace."
+  },
+  {
+      "id": 4,
+      "name": "Accessories",
+      "image": "images/accessory.jpg",
+      "elevation": 1233,
+      "price": "$10",
+      "sales": "29 sales",
+      "featured": true,
+      "accessorypage": false,
+      "description": "Crochet beanie for toddlers. Perfect for fall."
+  }
+  ],
+  "deals": [
+    {
+      "id": 0,
+      "name": "1 Extra Large Pizza",
+      "image": "images/deal3.jpg",
+      "elevation": 1233,
+      "featured": true,
+      "date": "Fridays only",
+      "offer": "$11.99",
+      "shop": " Fred's ",
+      "details": "Homemade Thin crust"
+      
+  },
+  {
+      "id": 1,
+      "name": "Donut Days",
+      "image": "images/deal2.jpg",
+      "elevation": 1233,
+      "featured": false,
+      "date": "Wednesdays",
+      "offer": "$9.99 for a dozen",
+      "details": "Donut Days" 
+  }
+  ],
+  "events": [
+    {
+      "id": 0,
+      "name": "Art in the Park",
+      "image": "images/Event4.jpg",
+      "elevation": 1233,
+      "featured": true,
+      "time": "3 - 5 pm",
+      "date": "May 14",
+      "venue": "Cedar Park",
+      "description": "Come join us for the funfilled event 'Art in the Park' at Cedar park. Ms.Emelia from 'Art Kids' will show our young artists how to make paper flowers. "
+  },
+  {
+      "id": 1,
+      "name": "Kite Festival",
+      "image": "images/Event3.JPG",
+      "elevation": 700,
+      "featured": true,
+      "time": "9 am",
+      "date": "May 22",
+      "venue": "Edgewater Beach",
+      "description": "Kite flying, free kite making kits, activities for kids like face painting and bean bag toss. "
+  },
+  {
+      "id": 2,
+      "name": "Farmers Market",
+      "image": "images/fm.jpg",
+      "elevation": 1233,
+      "featured": true,
+      "time": "10 - 4 pm",
+      "date": "May 14 and 15",
+      "venue": "Between Clark and Ashland at Gregory",
+      "description": "Locally grown fresh seasonal produce and prepared foods directly from growers."
+  },
+  {
+      "id": 3,
+      "name": "Edgewater Art Festival",
+      "image": "images/af.jpg",
+      "elevation": 1233,
+      "featured": false,
+      "time": "10 - 3 pm",
+      "date": "May 21 and 22",
+      "venue": "Between Sheridan and Broadway at Granville",
+      "description": "Unique handmade products are sold by our local artists."
+  }
+  ],
+  "frees": [
+    {
+      "id": 0,
+      "username": "Lila",
+      "name": "Learning chair",
+      "image": "images/free1.jpg",
+      "elevation": 1233,
+      "address": "Sheridan and Broadway",
+      "contact": "user@email.com",
+      "description": "Gently used toddler learning chair, good working condition"
+  },
+  {
+      "id": 1,
+      "username": "Hamzz",
+      "name": "Kids drum",
+      "image": "images/free2.jpg",
+      "elevation": 700,
+      "address": "Magnolia and Foster",
+      "contact": "user@email.com",
+      "description": "Number learning drum. Missing one stick."
+  },
+  {
+      "id": 2,
+      "username": "Azim",
+      "name": "Play Kitchen",
+      "image": "images/free3.jpg",
+      "elevation": 1233,
+      "address": "Carren and Clark",
+      "contact": "user@email.com",
+      "description": "Well loved play kitchen."
+  }
+  ],
+  "sells": [
+    {
+      "id": 0,
+      "username": "Lila",
+      "name": "Plant with planter",
+      "image": "images/sell1.jpg",
+      "elevation": 1233,
+      "address": "Clark and Foster",
+      "contact": "user@email.com",
+      "price": "$15",
+      "description": "Snake plant with planter"
+  },
+  {
+      "id": 1,
+      "username": "Azim",
+      "name": "Carseat",
+      "image": "images/sell2.jpg",
+      "elevation": 700,
+      "address": "Magnolia and Foster",
+      "contact": "user@email.com",
+      "price": "$50",
+      "description": "Carseat, perfect condition"
+  }
+  ],
+  "jewellery": [
+    {
+      "id": 0,
+      "name": "Necklace",
+      "image": "images/j1.jpg",
+      "price": "$ 15",
+      "sales": "17 sales",
+      "featured": false,
+      "jewellerypage": true,
+      "description": "Pink, gold and white beaded necklace."
+  },
+  {
+      "id": 1,
+      "name": "Necklace",
+      "image": "images/j2.jpg",
+      "price": "$ 15",
+      "sales": "26 sales",
+      "featured": false,
+      "jewellerypage": true,
+      "description": "Pink bead necklace with metal flowes."
+  },
+  {
+      "id": 2,
+      "name": "Butterfly earring",
+      "image": "images/j3.jpg",
+      "price": "$ 15",
+      "sales": "10 sales",
+      "featured": false,
+      "jewellerypage": true,
+      "description": "Metal lightweight earring."
+  },
+  {
+    "id": 3,
+    "name": "Necklace, Green",
+    "image": "images/j6.jpg",
+    "price": "$ 15",
+    "sales": "10 sales",
+    "featured": false,
+    "jewellerypage": true,
+    "description": "Green bead necklace."
+  },
+  {
+      "id": 4,
+      "name": "Jewellery",
+      "image": "images/jewellery.jpg",
+      "price": "$ 15",
+      "sales": "10 sales",
+      "featured": true,
+      "jewellerypage": false,
+      "description": "Metal lightweight earring."
+  }
+  ],
+  "paintings": [
+    {
+      "id": 0,
+      "name": "Lakefront Trail",
+      "image": "images/p32.jpg",
+      "elevation": 1233,
+      "featured": false,
+      "paintingpage": true,
+      "price": "$ 35",
+      "sales": "70 sales",
+      "description": "Oil on 12*16 stretched canvas board"
+  },
+  {
+      "id": 1,
+      "name": "Foggy Morning",
+      "image": "images/p42.jpg",
+      "elevation": 700,
+      "featured": false,
+      "paintingpage": true,
+      "price": "$ 35",
+      "sales": "29 sales",
+      "description": "Oil on 12*16 stretched canvas board"
+  },
+  {
+      "id": 2,
+      "name": "Pink hued sky",
+      "image": "images/p1.jpg",
+      "elevation": 1233,
+      "featured": false,
+      "paintingpage": true,
+      "price": "$ 75",
+      "sales": "48 sales",
+      "description": "Acrylic on 9*11 stretched canvas board"
+  },
+  {
+      "id": 3,
+      "name": "Yosemite",
+      "image": "images/p6.jpg",
+      "elevation": 1233,
+      "featured": false,
+      "paintingpage": true,
+      "price": "$ 35",
+      "sales": "13 sales",
+      "description": "Oil on 16*20 stretched canvas"
+  },
+  {
+      "id": 4,
+      "name": "Paintings",
+      "image": "images/Paint.JPG",
+      "elevation": 1233,
+      "featured": true,
+      "paintingpage": false,
+      "price": "$ 75",
+      "sales": "48 sales",
+      "description": "Acrylic on 38*48 stretched canvas"
+  }
+  ],
+  "artists": [
+    {
+      "id": 0,
+      "name": "Lila M",
+      "sales": 1050,
+      "image": "images/ip.jpg",
+      "elevation": 1233,
+      "featured": false,
+      "description": "Lila is an artist located in Chicago.She is a painter and illustrator. She works with acrylic and oil paint on canvas and does landscapes. The medium and the size of canvas can be customized."
+  },
+  {
+      "id": 1,
+      "name":"Amalu",
+      "sales": 1024,
+      "image": "images/B1.jpg",
+      "elevation": 877,
+      "featured": false,
+      "description": "Amalu is an artist,based in Chicago, who uses beads and wire to create unique and beautiful handmade jewellery and accessories. She takes custom orders and delivers within a reasonable time."
+  }
+  ],
+  "reviews": [
+    {
+      "id": 0,
+      "paintingId": 0,
+      "rating": 5, 
+      "text": "What a beautiful painting!. It came well packed without any delay.",
+      "author": "Ach00",
+      "date": "2021-10-25"
+  },
+  {
+      "id": 1,
+      "paintingId": 0,
+      "rating": 4, 
+      "text": "I loved it. This looks great in our room. The artist customised it to our requirement.",
+      "author": "Ei@aa",
+      "date": "2019-06-17"
+  },
+  {
+    "id": 2,
+    "paintingId": 1,
+    "rating": 5, 
+    "text": "What a beautiful painting!. It came well packed without any delay.",
+    "author": "Ach00",
+    "date": "2021-10-25"
+  },
+  {
+    "id": 3,
+    "paintingId": 1,
+    "rating": 4, 
+    "text": "I loved it. This looks great in our room. The artist customised it to our requirement.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 4,
+    "paintingId": 2,
+    "rating": 5, 
+    "text": "What a beautiful painting!. It came well packed without any delay.",
+    "author": "Ach00",
+    "date": "2021-10-25"
+  },
+  {
+    "id": 5,
+    "paintingId": 2,
+    "rating": 4, 
+    "text": "I loved it. This looks great in our room. The artist customised it to our requirement.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 6,
+    "paintingId": 3,
+    "rating": 5, 
+    "text": "What a beautiful painting!. It came well packed without any delay.",
+    "author": "Ach00",
+    "date": "2021-10-25"
+  },
+  {
+    "id": 7,
+    "paintingId": 3,
+    "rating": 4, 
+    "text": "I loved it. This looks great in our room. The artist customised it to our requirement.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 8,
+    "accessoryId": 0,
+    "rating": 4, 
+    "text": "Love it!. Shipping was fast. Love the color.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 9,
+    "accessoryId": 0,
+    "rating": 4, 
+    "text": "Great quality. Great price. Fast delivery. I'm ordering more.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 10,
+    "accessoryId": 1,
+    "rating": 4, 
+    "text": "Love it!. Shipping was fast. Love the color.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 11,
+    "accessoryId": 1,
+    "rating": 4, 
+    "text": "Great quality. Great price. Fast delivery. I'm ordering more.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 12,
+    "accessoryId": 2,
+    "rating": 4, 
+    "text": "Love it!. Shipping was fast. Love the color.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 13,
+    "accessoryId": 2,
+    "rating": 4, 
+    "text": "Great quality. Great price. Fast delivery. I'm ordering more.",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+    "id": 14,
+    "jewllId": 0,
+    "rating": 4, 
+    "text": "I absolutely love this!. Great quality. Goes well with my dress. Thank you!",
+    "author": "Ei@aa",
+    "date": "2019-06-17"
+  },
+  {
+      "id": 15,
+      "jewellId": 0,
+      "rating": 4, 
+      "text": "The jewellery is stunning. It can just in time for the occassion. I'm ordering more.",
+      "author": "Ei@aa",
+      "date": "2019-06-17"
+  },
+  {
+      "id": 16,
+      "jewellId": 1,
+      "rating": 5, 
+      "text": "I absolutely love this!. Great quality. Goes well with my dress. Thank you!",
+      "author": "Ach00",
+      "date": "2021-10-25"
+  },
+  {
+      "id": 17,
+      "jewellId": 1,
+      "rating": 4, 
+      "text": "The jewellery is stunning. It can just in time for the occassion. I'm ordering more.",
+      "author": "Ei@aa",
+      "date": "2019-06-17"
+  },
+  {
+      "id": 18,
+      "jewellId": 2,
+      "rating": 5, 
+      "text": "I absolutely love this!. Great quality. Goes well with my dress. Thank you!",
+      "author": "Ach00",
+      "date": "2021-10-25"
+  },
+  {
+      "id": 19,
+      "jewellId": 2,
+      "rating": 4, 
+      "text": "The jewellery is stunning. It can just in time for the occassion. I'm ordering more.",
+      "author": "Ei@aa",
+      "date": "2019-06-17"
+  }
+  ],
+  "services": [
+    {
+      "id": 0,
+      "name": "Babysitters",
+      "contact1": "Ria : 1232-343-456",
+      "contact2": "Elsa: 1324-432-453",
+      "contact3": "Anna: 1323-432-323"
+  },
+  {
+      "id": 1,
+      "name": "Dog walkers",
+      "contact1": "Tom : 1232-343-456",
+      "contact2": "Jack: 1324-432-453",
+      "contact3": "Will: 1323-432-323"
+  },
+  {
+      "id": 2,
+      "name": "Plumbing and Electrical",
+      "time": "10 - 4 pm",
+      "contact1": "Tony : 1232-343-456",
+      "contact2": "Pat: 1324-432-453",
+      "contact3": "Tim: 1323-432-323"
+  },
+  {
+      "id": 3,
+      "name": "Cleaning",
+      "time": "10 - 4 pm",
+      "contact1": "Tony : 1232-343-456",
+      "contact2": "Pat: 1324-432-453",
+      "contact3": "Tim: 1323-432-323"
+  }
+  ]
+}
+
+
+
+
+
+
+
+
